@@ -20,7 +20,7 @@ public class Display extends JFrame{
 	private int width, height;
 	public String title;
 	
-	private final int TILE_SIZE = 50;
+	private final int TILE_SIZE = 60;
 	private int rows;
     private Tile[][] tiles;
 	
@@ -37,7 +37,7 @@ public class Display extends JFrame{
         tiles = new Tile[rows][rows];
         for (int rij = 0; rij < rows; rij++) {
             for (int kolom = 0; kolom < rows; kolom++) {
-                tiles[rij][kolom] = new Tile(this);
+                tiles[rij][kolom] = new Tile(this, TILE_SIZE);
             }
         }
     }
@@ -47,13 +47,21 @@ public class Display extends JFrame{
         	panel.add(tiles[row][i]);
             tiles[row][i].setSize(TILE_SIZE, TILE_SIZE);
             tiles[row][i].setLocation(TILE_SIZE * i, TILE_SIZE * row);
-            tiles[row][i].setIcon(new ImageIcon(new ImageIcon("src/img/grass.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
+            tiles[row][i].setIcon(new ImageIcon(new ImageIcon("src/img/grass1.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
             
             //uncomment om border van de tiles te zien.
            //tiles[row][i].setBorder(BorderFactory.createLineBorder(Color.black));
 
         }
-
+        
+        //hier nog aparte methode voorschrijven en in andere klasse
+        tiles[1][1].setIcon(new ImageIcon(new ImageIcon("src/img/blueGate.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
+        tiles[1][2].setIcon(new ImageIcon(new ImageIcon("src/img/yellowDoor.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
+        tiles[1][3].setIcon(new ImageIcon(new ImageIcon("src/img/greenGate.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
+        tiles[1][4].setIcon(new ImageIcon(new ImageIcon("src/img/orangeGate.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
+        
+        //moet nog een tile erachter als background?
+        tiles[2][2].setIcon(new ImageIcon(new ImageIcon("src/img/yellowKey.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
     }
 	
 	public void createDisplay(){

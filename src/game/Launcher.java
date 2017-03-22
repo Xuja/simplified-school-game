@@ -3,6 +3,6 @@ package game;
 public class Launcher {
 
 	  public static void main(String[] args) {
-	        Game game = new Game("Key Game", 600, 600);
+	        Game game = new Game("Key Game", 700, 700);
 	    }
 }
