@@ -3,7 +3,7 @@ package game;
 import javax.swing.JPanel;
 
 import display.Display;
-import display.Tile;
+import tile.Tiles;
 
 public class Game {
 

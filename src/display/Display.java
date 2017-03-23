@@ -13,6 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import gfx.TileImage;
+import tile.Tiles;
+
 public class Display extends JFrame{
 	
     private JPanel panel;
@@ -22,7 +25,7 @@ public class Display extends JFrame{
 	
 	private final int TILE_SIZE = 60;
 	private int rows;
-    private Tile[][] tiles;
+    private Tiles[][] tiles;
 	
 	public Display(String title, int width, int height){
 		this.title = title;
@@ -34,10 +37,11 @@ public class Display extends JFrame{
 	}
 	
     public void setDisplay() {
-        tiles = new Tile[rows][rows];
+        tiles = new Tiles[rows][rows];
         for (int rij = 0; rij < rows; rij++) {
             for (int kolom = 0; kolom < rows; kolom++) {
-                tiles[rij][kolom] = new Tile(this, TILE_SIZE);
+            	//tiles[rij][kolom] = new Tiles(TILE_SIZE);
+                tiles[rij][kolom] = new Tiles(TileImage.grassTile, 0);
             }
         }
     }
@@ -54,11 +58,13 @@ public class Display extends JFrame{
 
         }
         
+        
         //hier nog aparte methode voorschrijven en in andere klasse
         tiles[1][1].setIcon(new ImageIcon(new ImageIcon("src/img/blueGate.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
         tiles[1][2].setIcon(new ImageIcon(new ImageIcon("src/img/yellowDoor.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
         tiles[1][3].setIcon(new ImageIcon(new ImageIcon("src/img/greenGate.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
         tiles[1][4].setIcon(new ImageIcon(new ImageIcon("src/img/orangeGate.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
+        tiles[2][8].setIcon(new ImageIcon(new ImageIcon("src/img/wall.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
         
         //moet nog een tile erachter als background?
         tiles[2][2].setIcon(new ImageIcon(new ImageIcon("src/img/yellowKey.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
