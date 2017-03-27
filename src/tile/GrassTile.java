@@ -4,8 +4,7 @@ import gfx.TileImage;
 
 public class GrassTile extends Tiles{
 
-	public GrassTile(int id) {
-		super(TileImage.grassTile, id);
+	public GrassTile(String texture, int id) {
+		super(texture, id);
 	}
-
 }

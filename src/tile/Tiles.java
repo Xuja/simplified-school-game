@@ -1,40 +1,32 @@
 package tile;
 
-import java.awt.image.BufferedImage;
+import entity.Player;
 
-import javax.swing.JLabel;
-
-import display.Display;
-
-
-public class Tiles extends JLabel{
+public class Tiles{
 	
-	private Display display;
-	private static final int TILE_WIDTH = 60, TILE_HEIGHT = 60;
-	private static final int TILE_SIZE = 60;
+	private static final Tiles[] TILES = new Tiles [256];
 	
-	public static Tiles[] tiles = new Tiles [256];
-	public static Tiles grassTile = new GrassTile(0);
-	public static Tiles wallTile = new WallTile(1);
-	public static Tiles barricadeTile = new BarricadeTile(2);
+	public static final Tiles TILE_GRASS = new GrassTile("src/img/grass1.png", 0);
+	public static final Tiles TILE_WALL = new WallTile("src/img/wall.png", 1);
+	public static final Tiles TILE_BARRICADE = new BarricadeTile("src/img/blueGate.png", 2, 0);
 	
-	protected BufferedImage texture;
+	//protected BufferedImage texture;
 	protected final int id;
+	protected final String tileTexture;
 	
-	
-	public Tiles(BufferedImage texture, int id){
-		this.texture = texture;
+	public Tiles(String tileTexture, int id){
+		this.tileTexture = tileTexture;
 		this.id = id;
-		tiles[id] = this;
+		TILES[id] = this;
 	}
 	
-	public Display getDisplay(){
-		return display;
+	public boolean isSolid(){
+		return false;
 	}
+	
+	public void beforePlayerWalk(Player player){}
 
-	public int getTILE_SIZE() {
-		return TILE_SIZE;
+	public static Tiles getTile(int id) {
+		return TILES[id];
 	}
-	
-	
 }

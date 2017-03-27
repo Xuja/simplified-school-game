@@ -4,8 +4,11 @@ import gfx.TileImage;
 
 public class WallTile extends Tiles {
 
-	public WallTile(int id) {
-		super(TileImage.wallTile, id);
+	public WallTile(String texture, int id) {
+		super(texture, id);
 	}
 
+	public boolean isSolid(){
+		return true;
+	}
 }

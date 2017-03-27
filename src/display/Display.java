@@ -1,106 +1,136 @@
 package display;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import gfx.TileImage;
+import tile.TileLabel;
 import tile.Tiles;
 
 public class Display extends JFrame{
-	
-    private JPanel panel;
-	
+
+	public static final int TILE_SIZE = 60;
+
+	private JPanel panel;
+
 	private int width, height;
 	public String title;
-	
-	private final int TILE_SIZE = 60;
+
 	private int rows;
-    private Tiles[][] tiles;
-	
+	private TileLabel[][] tiles;
+
 	public Display(String title, int width, int height){
 		this.title = title;
-    	this.width = width;
-    	this.height = height;
-    	this.rows = 10;
-    	setDisplay();
-    	createDisplay();    	
+		this.rows = 10;
+		this.width = rows * TILE_SIZE;
+		this.height = rows * TILE_SIZE + 29;
+		setDisplay();
+		createDisplay();    	
 	}
-	
-    public void setDisplay() {
-        tiles = new Tiles[rows][rows];
-        for (int rij = 0; rij < rows; rij++) {
-            for (int kolom = 0; kolom < rows; kolom++) {
-            	//tiles[rij][kolom] = new Tiles(TILE_SIZE);
-                tiles[rij][kolom] = new Tiles(TileImage.grassTile, 0);
-            }
-        }
-    }
-    
-    public void setRows(int row) {
-        for (int i = 0; i < this.rows; i++) {
-        	panel.add(tiles[row][i]);
-            tiles[row][i].setSize(TILE_SIZE, TILE_SIZE);
-            tiles[row][i].setLocation(TILE_SIZE * i, TILE_SIZE * row);
-            tiles[row][i].setIcon(new ImageIcon(new ImageIcon("src/img/grass1.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
-            
-            //uncomment om border van de tiles te zien.
-           //tiles[row][i].setBorder(BorderFactory.createLineBorder(Color.black));
 
-        }
-        
-        
-        //hier nog aparte methode voorschrijven en in andere klasse
-        tiles[1][1].setIcon(new ImageIcon(new ImageIcon("src/img/blueGate.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
-        tiles[1][2].setIcon(new ImageIcon(new ImageIcon("src/img/yellowDoor.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
-        tiles[1][3].setIcon(new ImageIcon(new ImageIcon("src/img/greenGate.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
-        tiles[1][4].setIcon(new ImageIcon(new ImageIcon("src/img/orangeGate.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
-        tiles[2][8].setIcon(new ImageIcon(new ImageIcon("src/img/wall.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
-        
-        //moet nog een tile erachter als background?
-        tiles[2][2].setIcon(new ImageIcon(new ImageIcon("src/img/yellowKey.png").getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
-    }
-	
+	public void setDisplay() {
+		tiles = new TileLabel[rows][rows];
+		try {
+			loadTiles("src/tiles.dat");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void createDisplay(){
 		this.setTitle(title);
-    	this.setResizable(false);
-    	
-    	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		this.setResizable(false);
+
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		int monitorWidth = gd.getDisplayMode().getWidth();
 		int monitorHeight = gd.getDisplayMode().getHeight();
 		this.setBounds((monitorWidth - width) / 2, (monitorHeight - height) / 2, width, height);
+
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
+
+		panel = new JPanel();
+		panel.setLayout(null);
+		panel.setPreferredSize(new Dimension(TILE_SIZE * rows, TILE_SIZE * rows));
+		panel.setMinimumSize(new Dimension(TILE_SIZE * rows, TILE_SIZE * rows));
+		panel.setMaximumSize(new Dimension(TILE_SIZE * rows, TILE_SIZE * rows));
+
+		panel.setFocusable(false);
+
+		Box box = new Box(BoxLayout.Y_AXIS);
+		box.add(Box.createVerticalGlue());
+		box.add(panel);
+		box.add(Box.createVerticalGlue());
+
+		this.add(box);
 		
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
-        
-        panel = new JPanel();
-        panel.setLayout(null);
-        panel.setPreferredSize(new Dimension(TILE_SIZE * rows, TILE_SIZE * rows));
-        panel.setMinimumSize(new Dimension(TILE_SIZE * rows, TILE_SIZE * rows));
-        panel.setMaximumSize(new Dimension(TILE_SIZE * rows, TILE_SIZE * rows));
-        
-        panel.setFocusable(false);
-        
-        Box box = new Box(BoxLayout.Y_AXIS);
-        box.add(Box.createVerticalGlue());
-        box.add(panel);
-        box.add(Box.createVerticalGlue());
-       
-        this.add(box);
-        
-        //If you dont want any borders uncomment
-        //this.pack();
-        
-        for (int i = 0; i < this.rows; i++) {
-            setRows(i);
-        }
-    }
+		for(int i = 0; i < rows; i++){
+			for(int j = 0; j < rows; j++){
+				panel.add(tiles[i][j]);
+			}
+		}
+	}
+
+	public void setTile(Tiles tile, int x, int y){
+		if(isTileWithinRange(x, y)){
+			TileLabel tl = new TileLabel(tile);
+			tl.setSize(TILE_SIZE, TILE_SIZE);
+			tl.loadImage(TILE_SIZE);
+			tl.setLocation(x * TILE_SIZE, y * TILE_SIZE);
+			tl.setVisible(true);
+			tiles[x][y] = tl;
+		}
+	}
+
+	public boolean isTileWithinRange(int x, int y){
+		return x >= 0 && x < tiles.length && y >= 0 && y < tiles[0].length;
+	}
+
+	public void loadTiles(String path) throws IOException{
+		File file = new File(path);
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		if(reader != null){
+
+			String line;
+			int index = 0;
+
+			while((line = reader.readLine()) != null){
+				String[] tileids = line.split(" ");
+				if(tileids.length != tiles.length){
+					System.err.println("Invalid width while reading the layout");
+					return;
+				}
+
+				for(int i = 0; i < tileids.length; i++){
+					int id = Integer.valueOf(tileids[i]);
+					Tiles tile = Tiles.getTile(id);
+					System.out.println(tile);
+					int x = index % rows;
+					int y = index / rows;
+					setTile(tile, x, y);
+					index++;
+				}
+			}
+
+			reader.close();
+		}
+		else{
+			System.err.println("Failed to intstantiate a buffered reader for file '" + path + "'!");
+		}
+	}
 }
