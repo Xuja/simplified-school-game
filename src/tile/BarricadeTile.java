@@ -19,7 +19,7 @@ public class BarricadeTile extends Tiles {
 	
 	public void beforePlayerWalkTo(Room room, Player player, int x, int y){
 		//if(keyID == player.getCurrentKey()){
-			room.replaceTile(TILE_GRASS, x, y);
+			room.replaceTile(TILE_WITHERED_GRASS, x, y);
 		//}
 	}
 }

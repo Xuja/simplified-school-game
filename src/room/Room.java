@@ -79,7 +79,7 @@ public class Room {
 	}
 	
 	public void loadEntities(){
-		thePlayer = new Player(this, 1, 1, "src/img/yellowKey.png");
+		thePlayer = new Player(this, 1, 1, "src/img/player.png");
 	}
 	
 	public Player getPlayer(){

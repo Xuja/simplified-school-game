@@ -1,7 +1,5 @@
 package tile;
 
-import gfx.TileImage;
-
 public class WallTile extends Tiles {
 
 	public WallTile(String texture, int id) {
