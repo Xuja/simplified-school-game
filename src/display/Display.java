@@ -14,7 +14,7 @@ import tile.Tiles;
 
 public class Display extends JFrame{
 
-	public static final int TILE_SIZE = 60;
+	public static final int TILE_SIZE = 64;
 
 	private JLayeredPane layeredPane;
 	private JPanel panel;
@@ -27,9 +27,9 @@ public class Display extends JFrame{
 	
 	private JLabel playerLabel;
 
-	public Display(String title, int width, int height){
+	public Display(String title){
 		this.title = title;
-		this.rows = 10;
+		this.rows = 12;
 		this.width = rows * TILE_SIZE;
 		this.height = rows * TILE_SIZE + 29;
 		createDisplay();    	

@@ -18,7 +18,7 @@ public class Game {
 
     private Room theRoom;
     
-    public Game(String title, int width, int height) {
+    public Game(String title) {
     	this.title = title;
     	this.width = width;
     	this.height = height;
@@ -29,7 +29,7 @@ public class Game {
     private void init(){
     	inputManager = new InputManager();
     	
-    	display = new Display(title, width, height);
+    	display = new Display(title);
     	display.setVisible(true);
     	display.addKeyListener(inputManager);
     	
