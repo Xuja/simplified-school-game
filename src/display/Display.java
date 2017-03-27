@@ -29,7 +29,7 @@ public class Display extends JFrame{
 
 	public Display(String title){
 		this.title = title;
-		this.rows = 12;
+		this.rows = 10;
 		this.width = rows * TILE_SIZE;
 		this.height = rows * TILE_SIZE + 29;
 		createDisplay();    	
