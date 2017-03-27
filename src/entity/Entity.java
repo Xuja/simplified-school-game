@@ -1,27 +1,41 @@
 package entity;
 
+import room.Room;
+
 public abstract class Entity {
 	
-	protected int x;
-	protected int y;
+	protected final Room theRoom;
 	
-	public Entity(){}
+	protected int posX;
+	protected int posY;
 	
-	public Entity(int x, int y){		
-		this.x = x;
-		this.y = y;
+	protected String icon;
+	
+	public Entity(Room room, String icon){
+		this(room, 0, 0, icon);
+	}
+	
+	public Entity(Room room, int x, int y, String icon){		
+		this.theRoom = room;
+		this.posX = x;
+		this.posY = y;
+		this.icon = icon;
 	}
 
 	public int getX(){
-		return x;
+		return posX;
 	}
 	
 	public int getY(){
-		return y;
+		return posY;
 	}
 	
 	public void setPosition(int x, int y){
-		this.x = x;
-		this.y = y;
+		this.posX = x;
+		this.posY = y;
+	}
+	
+	public String getIcon(){
+		return icon;
 	}
 }

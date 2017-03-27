@@ -1,7 +1,7 @@
 package tile;
 
 import entity.Player;
-import gfx.TileImage;
+import room.Room;
 
 public class BarricadeTile extends Tiles {
 
@@ -17,10 +17,9 @@ public class BarricadeTile extends Tiles {
 		return true;
 	}
 	
-	@Override
-	public void beforePlayerWalk(Player player){
-		if(player.getCurrentKey() == keyID){
-			//TODO replace tile with empty tile
-		}
+	public void beforePlayerWalkTo(Room room, Player player, int x, int y){
+		//if(keyID == player.getCurrentKey()){
+			room.replaceTile(TILE_GRASS, x, y);
+		//}
 	}
 }

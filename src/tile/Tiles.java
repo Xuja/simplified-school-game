@@ -1,6 +1,7 @@
 package tile;
 
 import entity.Player;
+import room.Room;
 
 public class Tiles{
 	
@@ -10,7 +11,6 @@ public class Tiles{
 	public static final Tiles TILE_WALL = new WallTile("src/img/wall.png", 1);
 	public static final Tiles TILE_BARRICADE = new BarricadeTile("src/img/blueGate.png", 2, 0);
 	
-	//protected BufferedImage texture;
 	protected final int id;
 	protected final String tileTexture;
 	
@@ -24,9 +24,15 @@ public class Tiles{
 		return false;
 	}
 	
-	public void beforePlayerWalk(Player player){}
+	public void beforePlayerWalkTo(Room room, Player player, int x, int y){}
 
+	public void onPlayerWalkedTo(Room room, Player player, int x, int y){}
+	
 	public static Tiles getTile(int id) {
 		return TILES[id];
+	}
+	
+	public boolean canPlayerWalkTo(Player player){
+		return !isSolid();
 	}
 }
