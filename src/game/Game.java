@@ -1,9 +1,9 @@
 package game;
 
-import javax.swing.JPanel;
+import java.io.IOException;
 
 import display.Display;
-import tile.Tiles;
+import room.Room;
 
 public class Game {
 
@@ -11,6 +11,8 @@ public class Game {
     private int width, height;
     public String title;
 
+    private Room theRoom;
+    
     public Game(String title, int width, int height) {
     	this.title = title;
     	this.width = width;
@@ -22,6 +24,15 @@ public class Game {
     private void init(){
     	display = new Display(title, width, height);
     	display.setVisible(true);
+    	theRoom = new Room(10);
+    	try {
+			theRoom.loadTiles("src/tiles.dat");
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(-1);
+		}
+    	
+    	theRoom.pushTilesToDisplay(display);
+    	display.repaint();
     }
-	  
 }
