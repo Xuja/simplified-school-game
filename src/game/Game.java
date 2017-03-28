@@ -21,12 +21,10 @@ public class Game {
     public Game(String title) {
     	this.title = title;
     	this.width = width;
-    	this.height = height;
-    
-        init();  
+    	this.height = height; 
     }
     
-    private void init(){
+    public void init(){
     	inputManager = new InputManager();
     	
     	display = new Display(title);
@@ -48,7 +46,6 @@ public class Game {
     	display.repaint();
     }
     
-    
     public void drawPlayer(Player player){
     	System.out.println("draw player");
     	display.paintPlayer(player);
@@ -56,5 +53,13 @@ public class Game {
     
     public void replaceTile(Tiles tile, int x, int y){
     	display.replaceTile(tile, x, y);
+    }
+    
+    public boolean canRun(){
+    	return !display.isWindowClosing();
+    }
+    
+    public void run(float deltaTime){
+    	System.out.println("Running game!");
     }
 }
