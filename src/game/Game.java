@@ -13,15 +13,12 @@ public class Game {
 	private InputManager inputManager;
 	
 	private Display display;
-    private int width, height;
     public String title;
 
     private Room theRoom;
     
     public Game(String title) {
     	this.title = title;
-    	this.width = width;
-    	this.height = height; 
     }
     
     public void init(){

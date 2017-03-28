@@ -44,7 +44,6 @@ public class PlayerMovement {
 				progress = 0.0F;
 				thePlayer.finalizeMove(moveDirection);
 				moveDirection = EnumDirection.NONE;
-				System.out.println("fin move");
 			}
 		}
 	}

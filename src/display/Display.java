@@ -90,7 +90,6 @@ public class Display extends JFrame implements WindowListener{
 		tl.setLocation(x * TILE_SIZE, y * TILE_SIZE);
 		tl.setVisible(true);
 		int index = x + y * 10;
-		System.out.println(index);
 		panel.add(tl, index);
 	}
 	
@@ -107,7 +106,6 @@ public class Display extends JFrame implements WindowListener{
 
 	public void replaceTile(Tiles tile, int x, int y) {
 		int index = x + (y * 10);
-		System.out.println(index);
 		panel.remove(index);
 		setTile(tile, x, y);
 	}
