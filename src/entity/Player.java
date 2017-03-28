@@ -14,6 +14,7 @@ public class Player extends Entity implements IActionListener{
 
 	public Player(Room room, int x, int y, String icon) {
 		super(room, x, y, icon);
+		playerMovement = new PlayerMovement(this, 0.5F);
 	}
 
 	public int getCurrentKey(){
@@ -56,8 +57,8 @@ public class Player extends Entity implements IActionListener{
 	 */
 	public void startMoving(EnumDirection dir){
 
-		//if(dir == null || playerMovement.isPlayerMoving())
-		//	return;
+		if(dir == null || playerMovement.isPlayerMoving())
+			return;
 
 		int nx = posX + dir.x;
 		int ny = posY + dir.y;
@@ -67,8 +68,7 @@ public class Player extends Entity implements IActionListener{
 
 		tile = theRoom.getTile(nx, ny);
 		if(tile.canPlayerWalkTo(this)){
-			//playerMovement.startMoving(dir);
-			this.setPosition(nx, ny);
+			playerMovement.startMoving(dir);
 		}
 		
 		theRoom.onPlayerMoved();
@@ -91,7 +91,15 @@ public class Player extends Entity implements IActionListener{
 		posX = nx;
 		posY = ny;
 	}
-
+	
+	public int getPlayerRenderPositionX(int tileSize){
+		return (int)((float)(posX + playerMovement.getX()) * tileSize);
+	}
+	
+	public int getPlayerRenderPositionY(int tileSize){
+		return (int)((float)(posY + playerMovement.getY()) * tileSize);
+	}
+	
 	@Override
 	public boolean isActive() {
 		return true;

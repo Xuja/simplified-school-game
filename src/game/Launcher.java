@@ -23,7 +23,7 @@ public class Launcher {
 				while(game.canRun()){
 					long currentTime = System.currentTimeMillis();
 					float delta = (currentTime - lastTime) / timerResolution;
-					System.out.println(delta);
+					game.run(delta);
 					lastTime = currentTime;
 					try {
 						Thread.sleep((long) (1000 / FPS));

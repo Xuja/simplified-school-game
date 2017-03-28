@@ -101,7 +101,7 @@ public class Display extends JFrame implements WindowListener{
 	public void paintPlayer(Player player){
 		playerLabel.setText("player");
 		playerLabel.setSize(TILE_SIZE, TILE_SIZE);
-		playerLabel.setLocation(player.getX() * TILE_SIZE, player.getY() * TILE_SIZE);
+		playerLabel.setLocation(player.getPlayerRenderPositionX(TILE_SIZE), player.getPlayerRenderPositionY(TILE_SIZE));
 		layeredPane.repaint();
 	}
 
