@@ -107,4 +107,8 @@ public class Player extends Entity implements IActionListener{
 	public boolean isActive() {
 		return true;
 	}
+	
+	public String getIcon(){
+		return super.getIcon() + "_" + entityState.getStateID();
+	}
 }
