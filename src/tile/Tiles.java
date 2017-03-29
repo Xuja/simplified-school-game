@@ -37,4 +37,8 @@ public class Tiles{
 	public boolean canPlayerWalkTo(Player player){
 		return !isSolid();
 	}
+	
+	public String getTileTexture(){
+		return tileTexture;
+	}
 }

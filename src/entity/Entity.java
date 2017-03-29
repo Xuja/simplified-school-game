@@ -11,6 +11,8 @@ public abstract class Entity {
 	
 	protected String icon;
 	
+	protected EntityState entityState;
+	
 	public Entity(Room room, String icon){
 		this(room, 0, 0, icon);
 	}
@@ -20,6 +22,7 @@ public abstract class Entity {
 		this.posX = x;
 		this.posY = y;
 		this.icon = icon;
+		this.entityState = EntityState.IDLE;
 	}
 
 	public int getX(){
@@ -37,5 +40,9 @@ public abstract class Entity {
 	
 	public String getIcon(){
 		return icon;
+	}
+	
+	public EntityState getEntityState(){
+		return entityState;
 	}
 }

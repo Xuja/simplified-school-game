@@ -14,7 +14,8 @@ public class Player extends Entity implements IActionListener{
 
 	public Player(Room room, int x, int y, String icon) {
 		super(room, x, y, icon);
-		playerMovement = new PlayerMovement(this, 0.5F);
+		this.playerMovement = new PlayerMovement(this, 0.5F);
+		this.entityState = EntityState.IDLE_DOWN;
 	}
 
 	public int getCurrentKey(){
@@ -69,6 +70,7 @@ public class Player extends Entity implements IActionListener{
 		tile = theRoom.getTile(nx, ny);
 		if(tile.canPlayerWalkTo(this)){
 			playerMovement.startMoving(dir);
+			entityState = EntityState.WALK_DIRECTION_MAP.get(dir);
 		}
 		
 		theRoom.onPlayerMoved();
@@ -88,8 +90,9 @@ public class Player extends Entity implements IActionListener{
 		Tiles tile = theRoom.getTile(nx, ny);
 		tile.onPlayerWalkedTo(theRoom, this, nx, ny);
 
-		posX = nx;
-		posY = ny;
+		setPosition(nx, ny);
+		
+		entityState = EntityState.IDLE_DIRECTION_MAP.get(dir);
 	}
 	
 	public int getPlayerRenderPositionX(int tileSize){

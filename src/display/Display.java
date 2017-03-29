@@ -11,7 +11,6 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import entity.Player;
-import tile.TileLabel;
 import tile.Tiles;
 
 public class Display extends JFrame implements WindowListener{
@@ -101,8 +100,9 @@ public class Display extends JFrame implements WindowListener{
 
 	public void replaceTile(Tiles tile, int x, int y) {
 		int index = x + (y * 10);
-		panel.remove(index);
-		setTile(tile, x, y);
+		TileLabel tileLabel = (TileLabel) panel.getComponent(index);
+		tileLabel.setTile(tile);
+		tileLabel.loadImage(TILE_SIZE);
 	}
 	
 	public boolean isWindowClosing(){
