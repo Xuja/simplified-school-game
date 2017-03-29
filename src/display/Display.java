@@ -61,11 +61,6 @@ public class Display extends JFrame implements WindowListener{
 
 		panel.setFocusable(false);
 
-		/*Box box = new Box(BoxLayout.Y_AXIS);
-		box.add(Box.createVerticalGlue());
-		box.add(panel);
-		box.add(Box.createVerticalGlue());*/
-
 		playerPanel = new JPanel();
 		playerPanel.setOpaque(false);
 		playerPanel.setLayout(null);

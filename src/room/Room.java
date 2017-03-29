@@ -30,7 +30,7 @@ public class Room {
 		return tiles[x][y];
 	}
 	
-	public void setTile(Tiles tile, int x, int y, boolean shouldRedraw){
+	public void setTile(Tiles tile, int x, int y){
 		if(isTileWithinRange(x, y)){
 			tiles[x][y] = tile;
 		}
@@ -66,7 +66,7 @@ public class Room {
 					Tiles tile = Tiles.getTile(id);
 					int x = index % roomSize;
 					int y = index / roomSize;
-					setTile(tile, x, y, false);
+					setTile(tile, x, y);
 					index++;
 				}
 			}
