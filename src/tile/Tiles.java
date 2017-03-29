@@ -11,6 +11,7 @@ public class Tiles{
 	public static final Tiles TILE_WALL = new WallTile("src/img/wall.png", 1);
 	public static final Tiles TILE_BARRICADE = new BarricadeTile("src/img/blueGate.png", 2, 0);
 	public static final Tiles TILE_WITHERED_GRASS = new WitheredGrassTile("src/img/grass2.png", 3);
+	public static final Tiles TILE_GOAL = new GoalTile("src/img/goal.png", 4 );
 	
 	protected final int id;
 	protected final String tileTexture;
