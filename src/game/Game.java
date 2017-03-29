@@ -13,20 +13,15 @@ public class Game {
 	private InputManager inputManager;
 	
 	private Display display;
-    private int width, height;
     public String title;
 
     private Room theRoom;
     
     public Game(String title) {
     	this.title = title;
-    	this.width = width;
-    	this.height = height;
-    
-        init();  
     }
     
-    private void init(){
+    public void init(){
     	inputManager = new InputManager();
     	
     	display = new Display(title);
@@ -48,13 +43,20 @@ public class Game {
     	display.repaint();
     }
     
-    
     public void drawPlayer(Player player){
-    	System.out.println("draw player");
     	display.paintPlayer(player);
     }
     
     public void replaceTile(Tiles tile, int x, int y){
     	display.replaceTile(tile, x, y);
+    }
+    
+    public boolean canRun(){
+    	return !display.isWindowClosing();
+    }
+    
+    public void run(float deltaTime){
+    	theRoom.getPlayer().update(deltaTime);
+    	this.drawPlayer(theRoom.getPlayer());
     }
 }

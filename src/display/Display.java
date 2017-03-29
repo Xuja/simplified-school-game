@@ -2,6 +2,8 @@ package display;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,7 +14,7 @@ import entity.Player;
 import tile.TileLabel;
 import tile.Tiles;
 
-public class Display extends JFrame{
+public class Display extends JFrame implements WindowListener{
 
 	public static final int TILE_SIZE = 64;
 
@@ -26,13 +28,15 @@ public class Display extends JFrame{
 	private int rows;
 	
 	private JLabel playerLabel;
-
+	
+	private boolean closeWindow = false;
+	
 	public Display(String title){
 		this.title = title;
 		this.rows = 10;
 		this.width = rows * TILE_SIZE;
 		this.height = rows * TILE_SIZE + 29;
-		createDisplay();    	
+		createDisplay();
 	}
 
 	public void createDisplay(){
@@ -44,7 +48,8 @@ public class Display extends JFrame{
 		int monitorHeight = gd.getDisplayMode().getHeight();
 		this.setBounds((monitorWidth - width) / 2, (monitorHeight - height) / 2, width, height);
 
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.addWindowListener(this);
 
 		layeredPane = new JLayeredPane();
 		layeredPane.setLayout(null);
@@ -85,7 +90,6 @@ public class Display extends JFrame{
 		tl.setLocation(x * TILE_SIZE, y * TILE_SIZE);
 		tl.setVisible(true);
 		int index = x + y * 10;
-		System.out.println(index);
 		panel.add(tl, index);
 	}
 	
@@ -96,14 +100,38 @@ public class Display extends JFrame{
 	public void paintPlayer(Player player){
 		playerLabel.setText("player");
 		playerLabel.setSize(TILE_SIZE, TILE_SIZE);
-		playerLabel.setLocation(player.getX() * TILE_SIZE, player.getY() * TILE_SIZE);
+		playerLabel.setLocation(player.getPlayerRenderPositionX(TILE_SIZE), player.getPlayerRenderPositionY(TILE_SIZE));
 		layeredPane.repaint();
 	}
 
 	public void replaceTile(Tiles tile, int x, int y) {
 		int index = x + (y * 10);
-		System.out.println(index);
 		panel.remove(index);
 		setTile(tile, x, y);
 	}
+	
+	public boolean isWindowClosing(){
+		return closeWindow;
+	}
+	
+	@Override
+	public void windowActivated(WindowEvent arg0) {}
+
+	@Override
+	public void windowClosed(WindowEvent arg0) {}
+
+	@Override
+	public void windowClosing(WindowEvent arg0) {	closeWindow = true;		}
+
+	@Override
+	public void windowDeactivated(WindowEvent arg0) {}
+
+	@Override
+	public void windowDeiconified(WindowEvent arg0) {}
+
+	@Override
+	public void windowIconified(WindowEvent e) {}
+
+	@Override
+	public void windowOpened(WindowEvent e) {}
 }
