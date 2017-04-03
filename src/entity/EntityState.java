@@ -36,6 +36,7 @@ public class EntityState {
 		return stateMap.get(id);
 	}
 	
+	//static initializer block
 	static{
 		WALK_DIRECTION_MAP.put(EnumDirection.DOWN, WALK_DOWN);
 		WALK_DIRECTION_MAP.put(EnumDirection.UP, WALK_UP);
