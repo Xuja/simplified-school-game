@@ -1,12 +1,9 @@
 package game;
 
-import java.io.IOException;
-
 import display.Display;
-import entity.Player;
 import input.InputManager;
+import room.MenuRoom;
 import room.Room;
-import tile.Tiles;
 
 public class Game {
 
@@ -28,27 +25,26 @@ public class Game {
     	display.setVisible(true);
     	display.addKeyListener(inputManager);
     	
-    	theRoom = new Room(this, 10);
-    	theRoom.loadEntities();
-    	inputManager.addActionListener(theRoom.getPlayer());
+    	theRoom = new MenuRoom(this);
+    	theRoom.init();
     	
-    	try {
-			theRoom.loadTiles("src/tiles.dat");
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(-1);
-		}
-    	
-    	theRoom.pushTilesToDisplay(display);
-    	display.repaint();
+    	//theRoom.pushTilesToDisplay(display);
+    	//display.repaint();
+    	display.setPanel(theRoom.getPanel());
     }
     
-    public void drawPlayer(Player player){
+    /*public void drawPlayer(Player player){
     	display.paintPlayer(player);
-    }
+    }*/
     
-    public void replaceTile(Tiles tile, int x, int y){
+    /*public void replaceTile(Tiles tile, int x, int y){
     	display.replaceTile(tile, x, y);
+    }*/
+    
+    public void setRoom(Room room){
+    	theRoom = room;
+    	theRoom.init();
+    	display.setPanel(room.getPanel());
     }
     
     public boolean canRun(){
@@ -56,7 +52,12 @@ public class Game {
     }
     
     public void run(float deltaTime){
-    	theRoom.getPlayer().update(deltaTime);
-    	this.drawPlayer(theRoom.getPlayer());
+    	theRoom.update(deltaTime);
+    	//theRoom.getPlayer().update(deltaTime);
+    	//this.drawPlayer(theRoom.getPlayer());
+    }
+    
+    public InputManager getInputManager(){
+    	return inputManager;
     }
 }

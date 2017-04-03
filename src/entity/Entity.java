@@ -1,12 +1,12 @@
 package entity;
 
+import room.GameRoom;
 import room.Room;
-import sprite.Sprite;
 import sprite.SpriteMap;
 
 public abstract class Entity {
 	
-	protected final Room theRoom;
+	protected final GameRoom theRoom;
 	
 	protected int posX;
 	protected int posY;
@@ -17,11 +17,11 @@ public abstract class Entity {
 	
 	private float animation = 0.0F;
 	
-	public Entity(Room room){
+	public Entity(GameRoom room){
 		this(room, 0, 0);
 	}
 	
-	public Entity(Room room, int x, int y){		
+	public Entity(GameRoom room, int x, int y){		
 		this.theRoom = room;
 		this.posX = x;
 		this.posY = y;

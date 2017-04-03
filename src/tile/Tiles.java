@@ -1,7 +1,7 @@
 package tile;
 
 import entity.Player;
-import room.Room;
+import room.GameRoom;
 
 public class Tiles{
 	
@@ -26,9 +26,9 @@ public class Tiles{
 		return false;
 	}
 	
-	public void beforePlayerWalkTo(Room room, Player player, int x, int y){}
+	public void beforePlayerWalkTo(GameRoom room, Player player, int x, int y){}
 
-	public void onPlayerWalkedTo(Room room, Player player, int x, int y){}
+	public void onPlayerWalkedTo(GameRoom room, Player player, int x, int y){}
 	
 	public static Tiles getTile(int id) {
 		return TILES[id];

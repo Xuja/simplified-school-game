@@ -1,7 +1,7 @@
 package tile;
 
 import entity.Player;
-import room.Room;
+import room.GameRoom;
 
 public class BarricadeTile extends Tiles {
 
@@ -17,7 +17,7 @@ public class BarricadeTile extends Tiles {
 		return true;
 	}
 	
-	public void beforePlayerWalkTo(Room room, Player player, int x, int y){
+	public void beforePlayerWalkTo(GameRoom room, Player player, int x, int y){
 		//if(keyID == player.getCurrentKey()){
 			room.replaceTile(TILE_WITHERED_GRASS, x, y);
 		//}

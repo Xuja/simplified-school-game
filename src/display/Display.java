@@ -1,27 +1,18 @@
 package display;
 
+import java.awt.Component;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.Image;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-
-import entity.Player;
-import tile.Tiles;
 
 public class Display extends JFrame implements WindowListener{
 
 	public static final int TILE_SIZE = 64;
-
-	private JLayeredPane layeredPane;
-	private JPanel panel;
-	private JPanel playerPanel;
 	
 	private int width, height;
 	public String title;
@@ -52,7 +43,7 @@ public class Display extends JFrame implements WindowListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.addWindowListener(this);
 
-		layeredPane = new JLayeredPane();
+		/*layeredPane = new JLayeredPane();
 		layeredPane.setLayout(null);
 		layeredPane.setSize(rows * TILE_SIZE, rows * TILE_SIZE);
 		
@@ -76,10 +67,10 @@ public class Display extends JFrame implements WindowListener{
 		layeredPane.add(playerPanel, new Integer(1), 0);
 		
 		layeredPane.repaint();
-		this.add(layeredPane);
+		this.add(layeredPane);*/
 	}
 
-	public void setTile(Tiles tile, int x, int y){
+	/*public void setTile(Tiles tile, int x, int y){
 		TileLabel tl = new TileLabel(tile);
 		tl.setSize(TILE_SIZE, TILE_SIZE);
 		tl.loadImage(TILE_SIZE);
@@ -107,6 +98,16 @@ public class Display extends JFrame implements WindowListener{
 		TileLabel tileLabel = (TileLabel) panel.getComponent(index);
 		tileLabel.setTile(tile);
 		tileLabel.loadImage(TILE_SIZE);
+	}*/
+	
+	public void setPanel(JLayeredPane panel){
+		this.getContentPane().removeAll();
+		this.getContentPane().add(panel);
+		this.repaint();
+	}
+	
+	public void replacePanel(JLayeredPane panel){
+		
 	}
 	
 	public boolean isWindowClosing(){

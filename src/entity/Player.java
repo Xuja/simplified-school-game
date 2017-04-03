@@ -3,7 +3,7 @@ package entity;
 import game.EnumDirection;
 import input.IActionListener;
 import input.InputAction;
-import room.Room;
+import room.GameRoom;
 import sprite.SpriteFactory;
 import tile.Tiles;
 
@@ -13,7 +13,7 @@ public class Player extends Entity implements IActionListener{
 
 	private int currentKey = -1;
 	
-	public Player(Room room, int x, int y) {
+	public Player(GameRoom room, int x, int y) {
 		super(room, x, y);
 		this.playerMovement = new PlayerMovement(this, 0.5F);
 		this.entityState = EntityState.IDLE_DOWN;

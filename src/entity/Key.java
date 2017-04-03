@@ -1,10 +1,10 @@
 package entity;
 
-import room.Room;
+import room.GameRoom;
 
 public class Key extends Entity{
 
-	public Key(Room room, int x, int y) {
+	public Key(GameRoom room, int x, int y) {
 		super(room, x, y);
 	}
 	

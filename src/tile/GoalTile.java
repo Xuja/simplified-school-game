@@ -1,7 +1,7 @@
 package tile;
 
 import entity.Player;
-import room.Room;
+import room.GameRoom;
 
 public class GoalTile extends Tiles {
 
@@ -10,8 +10,7 @@ public class GoalTile extends Tiles {
 	}
 
 	@Override
-	public void onPlayerWalkedTo(Room room, Player player, int x, int y){
-		System.out.println("Finished Game!");
-		System.exit(0);
+	public void onPlayerWalkedTo(GameRoom room, Player player, int x, int y){
+		room.finishLevel();
 	}
 }
