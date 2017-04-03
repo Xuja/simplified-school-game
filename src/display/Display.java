@@ -2,9 +2,11 @@ package display;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -92,7 +94,9 @@ public class Display extends JFrame implements WindowListener{
 	}
 	
 	public void paintPlayer(Player player){
-		playerLabel.setText("player");
+		//playerLabel.setText("player");
+		String icon = player.getIcon();
+		playerLabel.setIcon(new ImageIcon(new ImageIcon(icon).getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_DEFAULT)));
 		playerLabel.setSize(TILE_SIZE, TILE_SIZE);
 		playerLabel.setLocation(player.getPlayerRenderPositionX(TILE_SIZE), player.getPlayerRenderPositionY(TILE_SIZE));
 		layeredPane.repaint();

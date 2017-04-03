@@ -4,6 +4,7 @@ import game.EnumDirection;
 import input.IActionListener;
 import input.InputAction;
 import room.Room;
+import sprite.SpriteFactory;
 import tile.Tiles;
 
 public class Player extends Entity implements IActionListener{
@@ -11,13 +12,43 @@ public class Player extends Entity implements IActionListener{
 	private PlayerMovement playerMovement;
 
 	private int currentKey = -1;
-
-	public Player(Room room, int x, int y, String icon) {
-		super(room, x, y, icon);
+	
+	public Player(Room room, int x, int y) {
+		super(room, x, y);
 		this.playerMovement = new PlayerMovement(this, 0.5F);
 		this.entityState = EntityState.IDLE_DOWN;
 	}
 
+	@Override
+	protected void addSprites() {
+		SpriteFactory sf = new SpriteFactory("res/textures/player");
+		spriteMap.addSprite(EntityState.IDLE_DOWN, sf.addSprite("DOWN1").buildSprite());
+		spriteMap.addSprite(EntityState.IDLE_LEFT, sf.addSprite("LEFT1").buildSprite());
+		spriteMap.addSprite(EntityState.IDLE_RIGHT, sf.addSprite("RIGHT1").buildSprite());
+		spriteMap.addSprite(EntityState.IDLE_UP, sf.addSprite("UP1").buildSprite());
+		
+		int i;
+		for(i = 0; i < 9; i++){
+			sf.addSprite("DOWN" + (i + 1));
+		}
+		spriteMap.addSprite(EntityState.WALK_DOWN, sf.buildSprite());
+		
+		for(i = 0; i < 9; i++){
+			sf.addSprite("LEFT" + (i + 1));
+		}
+		spriteMap.addSprite(EntityState.WALK_LEFT, sf.buildSprite());
+		
+		for(i = 0; i < 9; i++){
+			sf.addSprite("RIGHT" + (i + 1));
+		}
+		spriteMap.addSprite(EntityState.WALK_RIGHT, sf.buildSprite());
+		
+		for(i = 0; i < 9; i++){
+			sf.addSprite("UP" + (i + 1));
+		}
+		spriteMap.addSprite(EntityState.WALK_UP, sf.buildSprite());
+	}
+	
 	public int getCurrentKey(){
 		return currentKey;
 	}
@@ -49,6 +80,7 @@ public class Player extends Entity implements IActionListener{
 	}
 
 	public void update(float deltaTime){
+		super.update(deltaTime);
 		playerMovement.updateMovement(deltaTime);
 	}
 
@@ -70,7 +102,7 @@ public class Player extends Entity implements IActionListener{
 		tile = theRoom.getTile(nx, ny);
 		if(tile.canPlayerWalkTo(this)){
 			playerMovement.startMoving(dir);
-			entityState = EntityState.WALK_DIRECTION_MAP.get(dir);
+			setEntityState(EntityState.WALK_DIRECTION_MAP.get(dir));
 		}
 		
 		theRoom.onPlayerMoved();
@@ -92,7 +124,7 @@ public class Player extends Entity implements IActionListener{
 
 		setPosition(nx, ny);
 		
-		entityState = EntityState.IDLE_DIRECTION_MAP.get(dir);
+		setEntityState(EntityState.IDLE_DIRECTION_MAP.get(dir));
 	}
 	
 	public int getPlayerRenderPositionX(int tileSize){
@@ -108,7 +140,8 @@ public class Player extends Entity implements IActionListener{
 		return true;
 	}
 	
-	public String getIcon(){
-		return super.getIcon() + "_" + entityState.getStateID();
+	public void setEntityState(EntityState state){
+		entityState = state;
+		System.out.println(state.getStateID());
 	}
 }
