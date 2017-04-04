@@ -8,10 +8,13 @@ public class Tiles{
 	private static final Tiles[] TILES = new Tiles [256];
 	
 	public static final Tiles TILE_GRASS = new GrassTile("res/textures/tile/grass1.png", 0);
-	public static final Tiles TILE_WALL = new WallTile("res/textures/tile/wall.png", 1);
-	public static final Tiles TILE_BARRICADE = new BarricadeTile("res/textures/tile/blueGate.png", 2, 0);
-	public static final Tiles TILE_WITHERED_GRASS = new WitheredGrassTile("res/textures/tile/grass2.png", 3);
-	public static final Tiles TILE_GOAL = new GoalTile("res/textures/tile/goal.png", 4 );
+	public static final Tiles TILE_GOAL = new GoalTile("res/textures/tile/goal.png", 1 );
+	public static final Tiles TILE_WITHERED_GRASS = new WitheredGrassTile("res/textures/tile/grass2.png", 2);
+	public static final Tiles TILE_WALL = new WallTile("res/textures/tile/wall.png", 3);
+	public static final Tiles TILE_BARRICADE_BLUE = new BarricadeTile("res/textures/tile/blueGate.png", 4, 0);	
+	public static final Tiles TILE_BARRICADE_GREEN = new BarricadeTile("res/textures/tile/greenGate.png", 5, 1);	
+	public static final Tiles TILE_BARRICADE_ORANGE = new BarricadeTile("res/textures/tile/orangeGate.png", 6, 2);	
+	public static final Tiles TILE_BARRICADE_YELLOW = new BarricadeTile("res/textures/tile/yellowGate.png", 7, 3);	
 	
 	protected final int id;
 	protected final String tileTexture;
