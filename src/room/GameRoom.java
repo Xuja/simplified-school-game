@@ -63,7 +63,7 @@ public class GameRoom extends Room {
 
 	@Override
 	public void init() {
-
+		
 		layeredPane = new JLayeredPane();
 		layeredPane.setLayout(null);
 		layeredPane.setFocusable(false);
@@ -95,10 +95,13 @@ public class GameRoom extends Room {
 
 		loadRoomData();
 
-		layeredPane.setSize(roomRows * TILE_SIZE, roomColumns * TILE_SIZE);
-		tilePanel.setSize(roomRows * TILE_SIZE, roomColumns * TILE_SIZE);
-		playerPanel.setSize(roomRows * TILE_SIZE, roomColumns * TILE_SIZE);
-		entityPanel.setSize(roomRows * TILE_SIZE, roomColumns * TILE_SIZE);
+		int sizeX = roomRows * TILE_SIZE + 6;
+		int sizeY = roomColumns * TILE_SIZE + 29;
+		
+		layeredPane.setSize(sizeX, sizeY);
+		tilePanel.setSize(sizeX, sizeY);
+		playerPanel.setSize(sizeX, sizeY);
+		entityPanel.setSize(sizeX, sizeY);
 
 		if(thePlayer == null){
 			thePlayer = new Player(this);
@@ -204,8 +207,8 @@ public class GameRoom extends Room {
 							dataMap.put(attributeNode.getNodeName(), attributeNode.getTextContent());
 						}
 						entity.loadEntityData(dataMap);
-						addEntityToRoom(entity);
 					}
+					addEntityToRoom(entity);
 				}
 			}
 		}

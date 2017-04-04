@@ -145,6 +145,5 @@ public class Player extends Entity implements IActionListener{
 	
 	public void setEntityState(EntityState state){
 		entityState = state;
-		System.out.println(state.getStateID());
 	}
 }
