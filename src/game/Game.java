@@ -1,6 +1,9 @@
 package game;
 
 import display.Display;
+import entity.EntityRegistry;
+import entity.Key;
+import entity.Player;
 import input.InputManager;
 import room.MenuRoom;
 import room.Room;
@@ -25,6 +28,9 @@ public class Game {
     	display.setVisible(true);
     	display.addKeyListener(inputManager);
     	
+    	EntityRegistry.registerEntity("player", Player.class);
+    	EntityRegistry.registerEntity("key", Key.class);
+    	
     	theRoom = new MenuRoom(this);
     	theRoom.init();
     	
@@ -32,6 +38,9 @@ public class Game {
     }
 
     public void setRoom(Room room){
+    	if(theRoom != null){
+    		theRoom.closeRoom();
+    	}
     	theRoom = room;
     	theRoom.init();
     	display.setPanel(room.getPanel());

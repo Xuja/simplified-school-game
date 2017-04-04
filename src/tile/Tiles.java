@@ -11,10 +11,10 @@ public class Tiles{
 	public static final Tiles TILE_GOAL = new GoalTile("res/textures/tile/goal.png", 1 );
 	public static final Tiles TILE_WITHERED_GRASS = new WitheredGrassTile("res/textures/tile/grass2.png", 2);
 	public static final Tiles TILE_WALL = new WallTile("res/textures/tile/wall.png", 3);
-	public static final Tiles TILE_BARRICADE_BLUE = new BarricadeTile("res/textures/tile/blueGate.png", 4, 0);	
-	public static final Tiles TILE_BARRICADE_GREEN = new BarricadeTile("res/textures/tile/greenGate.png", 5, 1);	
-	public static final Tiles TILE_BARRICADE_ORANGE = new BarricadeTile("res/textures/tile/orangeGate.png", 6, 2);	
-	public static final Tiles TILE_BARRICADE_YELLOW = new BarricadeTile("res/textures/tile/yellowGate.png", 7, 3);	
+	public static final Tiles TILE_BARRICADE_BLUE = new BarricadeTile("res/textures/tile/barricade_blue.png", 4, 0);	
+	public static final Tiles TILE_BARRICADE_GREEN = new BarricadeTile("res/textures/tile/barricade_green.png", 5, 1);	
+	public static final Tiles TILE_BARRICADE_RED = new BarricadeTile("res/textures/tile/barricade_red.png", 6, 2);	
+	public static final Tiles TILE_BARRICADE_YELLOW = new BarricadeTile("res/textures/tile/barricade_yellow.png", 7, 3);	
 	
 	protected final int id;
 	protected final String tileTexture;

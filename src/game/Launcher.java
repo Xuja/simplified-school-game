@@ -5,9 +5,6 @@ public class Launcher {
 	public static final float FPS = 60.0F;
 	
 	public static void main(String[] args) {
-		Game game = new Game("Key Game");
-		
-		game.init();
 
 		Thread gameUpdateThread = new Thread(){
 
@@ -15,6 +12,10 @@ public class Launcher {
 			
 			public void run(){
 
+				Game game = new Game("Key Game");
+				
+				game.init();
+				
 				System.out.println("Game Thread starting!");
 
 				final float timerResolution = 1000F;

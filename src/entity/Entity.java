@@ -1,5 +1,11 @@
 package entity;
 
+import java.awt.Image;
+import java.util.HashMap;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import room.GameRoom;
 import sprite.SpriteMap;
 
@@ -17,20 +23,40 @@ public abstract class Entity {
 	private float animation = 0.0F;
 	protected float animationSpeed = 1.0F;
 	
-	public Entity(GameRoom room){
-		this(room, 0, 0);
-	}
+	private JLabel entityLabel;
 	
-	public Entity(GameRoom room, int x, int y){		
+	public Entity(GameRoom room){
 		this.theRoom = room;
-		this.posX = x;
-		this.posY = y;
 		this.entityState = EntityState.IDLE;
-		this.addSprites();
 	}
 	
 	public void update(float deltaTime){
 		animation = (animation + deltaTime * animationSpeed) % 1.0F;
+	}
+	
+	public void render(int size){
+		String icon = getIcon();
+		entityLabel.setIcon(new ImageIcon(new ImageIcon(icon).getImage().getScaledInstance(size, size, Image.SCALE_DEFAULT)));
+		entityLabel.setSize(size, size);
+		entityLabel.setLocation(getRenderPositionX(size), getRenderPositionY(size));
+		entityLabel.repaint();
+	}
+	
+	public int getRenderPositionX(int tileSize){
+		return (posX * tileSize);
+	}
+	
+	public int getRenderPositionY(int tileSize){
+		return (posY * tileSize);
+	}
+	
+	public JLabel getEntityLabel(){
+		return entityLabel;
+	}
+	
+	public void init(){
+		entityLabel = new JLabel();
+		addSprites();
 	}
 	
 	protected abstract void addSprites();
@@ -48,7 +74,16 @@ public abstract class Entity {
 		this.posY = y;
 	}
 	
+	public void setEntityState(String stateID){
+		this.entityState = EntityState.getEntityState(stateID);
+		if(entityState == null){
+			entityState = EntityState.IDLE;
+		}
+	}
+	
 	public final String getIcon(){
 		return spriteMap.getSprite(entityState).getSprite(animation);
 	}
+	
+	public void loadEntityData(HashMap<String,String> dataMap){}
 }

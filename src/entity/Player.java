@@ -13,8 +13,8 @@ public class Player extends Entity implements IActionListener{
 
 	private int currentKey = -1;
 	
-	public Player(GameRoom room, int x, int y) {
-		super(room, x, y);
+	public Player(GameRoom room){
+		super(room);
 		this.playerMovement = new PlayerMovement(this, 0.5F);
 		this.entityState = EntityState.IDLE_DOWN;
 		this.animationSpeed = 2.0F;
@@ -86,7 +86,10 @@ public class Player extends Entity implements IActionListener{
 	}
 
 	
-	 //Start moving the player in a direction, won't do anything if the player is already moving.
+	 /**
+	  * Start moving the player in a direction, won't do anything if the player is already moving.
+	  * @param dir the direction the player will be moving
+	  */
 	 public void startMoving(EnumDirection dir){
 
 		if(dir == null || playerMovement.isPlayerMoving())
@@ -103,12 +106,13 @@ public class Player extends Entity implements IActionListener{
 			playerMovement.startMoving(dir);
 			setEntityState(EntityState.WALK_DIRECTION_MAP.get(dir));
 		}
-		
-		theRoom.onPlayerMoved();
 	}
 
 
-	//Fired by player movement when the player is ready to progress to the next tile.
+	/**
+	 * Fired by player movement when the player is ready to progress to the next tile.
+	 * @param dir the direction the player is moving
+	 */
 	public void finalizeMove(EnumDirection dir){
 		if(dir == null)
 			return;
@@ -124,11 +128,13 @@ public class Player extends Entity implements IActionListener{
 		setEntityState(EntityState.IDLE_DIRECTION_MAP.get(dir));
 	}
 	
-	public int getPlayerRenderPositionX(int tileSize){
+	@Override
+	public int getRenderPositionX(int tileSize){
 		return (int)((float)(posX + playerMovement.getX()) * tileSize);
 	}
 	
-	public int getPlayerRenderPositionY(int tileSize){
+	@Override
+	public int getRenderPositionY(int tileSize){
 		return (int)((float)(posY + playerMovement.getY()) * tileSize);
 	}
 	

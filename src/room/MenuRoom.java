@@ -18,9 +18,10 @@ public class MenuRoom extends Room{
 	private JLayeredPane backPanel;
 	private JPanel mainPanel;
 	private JButton startButton, exitButton, helpButton;
-		
+	private ButtonGroup modeSelectGroup;
+	
 	private int width = 600;
-	private int height = 600;
+	private int height = 400;
 	
 	public MenuRoom(Game game) {
 		super(game);
@@ -49,7 +50,7 @@ public class MenuRoom extends Room{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				theGame.setRoom(new GameRoom(theGame, 10));
+				theGame.setRoom(new GameRoom(theGame, modeSelectGroup.getSelection().getActionCommand()));
 			}
 			
 		});
@@ -100,14 +101,17 @@ public class MenuRoom extends Room{
 		JRadioButton easyMode = new JRadioButton("Easy", false);
 		easyMode.setSize(100, 20);
 		easyMode.setLocation(0, 20);
+		easyMode.setActionCommand("easy");
 		easyMode.setFocusable(false);
 		JRadioButton normalMode = new JRadioButton("Normal", true);
 		normalMode.setSize(100, 20);
 		normalMode.setLocation(0, 40);
+		normalMode.setActionCommand("normal");
 		normalMode.setFocusable(false);
 		JRadioButton hardMode = new JRadioButton("Hard", false);
 		hardMode.setSize(100, 20);
 		hardMode.setLocation(0, 60);
+		hardMode.setActionCommand("hard");
 		hardMode.setFocusable(false);
 		
 		easyMode.setForeground(Color.BLACK);
@@ -119,22 +123,10 @@ public class MenuRoom extends Room{
 		hardMode.setForeground(Color.BLACK);
 		hardMode.setFont(new java.awt.Font("Arial", Font.BOLD, 16));
 		
-		ButtonGroup bg = new ButtonGroup();
-		bg.add(easyMode);
-		bg.add(normalMode);
-		bg.add(hardMode);
-		
-		if(easyMode.isSelected()){
-			//code
-		}
-		
-		if(normalMode.isSelected()){
-			
-		}
-		
-		if(hardMode.isSelected()){
-			//code
-		}
+		modeSelectGroup = new ButtonGroup();
+		modeSelectGroup.add(easyMode);
+		modeSelectGroup.add(normalMode);
+		modeSelectGroup.add(hardMode);
 		
 		mainPanel.add(easyMode);
 		mainPanel.add(normalMode);
@@ -161,6 +153,11 @@ public class MenuRoom extends Room{
 	@Override
 	public JLayeredPane getPanel() {
 		return backPanel;
+	}
+
+	@Override
+	public void closeRoom() {
+		
 	}
 
 }

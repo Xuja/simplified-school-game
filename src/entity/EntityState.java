@@ -17,15 +17,9 @@ public class EntityState {
 	public static final EntityState WALK_DOWN = new EntityState("walk_down");
 	public static final EntityState WALK_LEFT = new EntityState("walk_left");
 	public static final EntityState WALK_RIGHT = new EntityState("walk_right");
-	
-	public static final EntityState KEY_BLUE = new EntityState("blue_key");
-	public static final EntityState KEY_ORANGE = new EntityState("orange_key");
-	public static final EntityState KEY_GREEN = new EntityState("green_key");
-	public static final EntityState KEY_YELLOW = new EntityState("yellow_key");
 
 	public static final HashMap<EnumDirection, EntityState> WALK_DIRECTION_MAP = new HashMap<EnumDirection, EntityState>();
 	public static final HashMap<EnumDirection, EntityState> IDLE_DIRECTION_MAP = new HashMap<EnumDirection, EntityState>();
-	
 	
 	private final String stateID;
 	
