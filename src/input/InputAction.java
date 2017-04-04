@@ -28,7 +28,7 @@ public enum InputAction {
 	public static InputAction get(int index){
 		return values()[index % size()];
 	}
-	//??
+
 	static{
 		for(InputAction action : values()){
 			INPUT_MAP.put(action.keyIndex, action);
