@@ -1,6 +1,5 @@
 package display;
 
-import java.awt.Component;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.WindowEvent;
@@ -10,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
+@SuppressWarnings("serial")
 public class Display extends JFrame implements WindowListener{
 
 	public static final int TILE_SIZE = 64;
@@ -19,7 +19,8 @@ public class Display extends JFrame implements WindowListener{
 
 	private int rows;
 	
-	private JLabel playerLabel;
+	//is deze wel nodig?
+	//private JLabel playerLabel;
 	
 	private boolean closeWindow = false;
 	

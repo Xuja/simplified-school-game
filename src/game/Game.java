@@ -28,19 +28,9 @@ public class Game {
     	theRoom = new MenuRoom(this);
     	theRoom.init();
     	
-    	//theRoom.pushTilesToDisplay(display);
-    	//display.repaint();
     	display.setPanel(theRoom.getPanel());
     }
-    
-    /*public void drawPlayer(Player player){
-    	display.paintPlayer(player);
-    }*/
-    
-    /*public void replaceTile(Tiles tile, int x, int y){
-    	display.replaceTile(tile, x, y);
-    }*/
-    
+
     public void setRoom(Room room){
     	theRoom = room;
     	theRoom.init();
@@ -53,8 +43,6 @@ public class Game {
     
     public void run(float deltaTime){
     	theRoom.update(deltaTime);
-    	//theRoom.getPlayer().update(deltaTime);
-    	//this.drawPlayer(theRoom.getPlayer());
     }
     
     public InputManager getInputManager(){

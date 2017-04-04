@@ -84,11 +84,9 @@ public class Player extends Entity implements IActionListener{
 		playerMovement.updateMovement(deltaTime);
 	}
 
-	/**
-	 * Start moving the player in a direction, won't do anything if the player is already moving.
-	 * @param dir the direction the player needs to move to.
-	 */
-	public void startMoving(EnumDirection dir){
+	
+	 //Start moving the player in a direction, won't do anything if the player is already moving.
+	 public void startMoving(EnumDirection dir){
 
 		if(dir == null || playerMovement.isPlayerMoving())
 			return;
@@ -108,10 +106,8 @@ public class Player extends Entity implements IActionListener{
 		theRoom.onPlayerMoved();
 	}
 
-	/**
-	 * Fired by player movement when the player is ready to progress to the next tile.
-	 * @param dir the direction the player needs to move to.
-	 */
+
+	//Fired by player movement when the player is ready to progress to the next tile.
 	public void finalizeMove(EnumDirection dir){
 		if(dir == null)
 			return;

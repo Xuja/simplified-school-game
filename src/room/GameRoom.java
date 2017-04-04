@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import display.Display;
 import display.TileLabel;
+import entity.Key;
 import entity.Player;
 import game.Game;
 import tile.Tiles;
@@ -23,6 +24,7 @@ public class GameRoom extends Room {
 	public static final int ROWS = 10;
 
 	private Player thePlayer;
+	private Key blueKey;
 
 	private Tiles[][] tiles;
 	private final int roomSize;
@@ -128,10 +130,15 @@ public class GameRoom extends Room {
 
 	public void loadEntities(){
 		thePlayer = new Player(this, 1, 1);
+		blueKey = new Key(this, 1, 2);
 	}
 
 	public Player getPlayer(){
 		return thePlayer;
+	}
+	
+	public Key getKey(){
+		return blueKey;
 	}
 
 	public void setTile(Tiles tile, int x, int y){

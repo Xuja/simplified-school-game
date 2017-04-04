@@ -1,6 +1,7 @@
 package entity;
 
 import room.GameRoom;
+import sprite.SpriteFactory;
 
 public class Key extends Entity{
 
@@ -14,6 +15,7 @@ public class Key extends Entity{
 
 	@Override
 	protected void addSprites() {
-		
+		SpriteFactory sf = new SpriteFactory("res/textures/key");
+		spriteMap.addSprite(EntityState.KEY_BLUE, sf.addSprite("blue_key").buildSprite());
 	}
 }

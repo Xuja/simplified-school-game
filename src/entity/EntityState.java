@@ -13,13 +13,19 @@ public class EntityState {
 	public static final EntityState IDLE_DOWN = new EntityState("idle_down");
 	public static final EntityState IDLE_LEFT = new EntityState("idle_left");
 	public static final EntityState IDLE_RIGHT = new EntityState("idle_right");
-	public static final EntityState WALK_UP = new EntityState("walk_up"); //hoe doe ik hier meer images achter elkaar?
+	public static final EntityState WALK_UP = new EntityState("walk_up");
 	public static final EntityState WALK_DOWN = new EntityState("walk_down");
 	public static final EntityState WALK_LEFT = new EntityState("walk_left");
 	public static final EntityState WALK_RIGHT = new EntityState("walk_right");
+	
+	public static final EntityState KEY_BLUE = new EntityState("blue_key");
+	public static final EntityState KEY_ORANGE = new EntityState("orange_key");
+	public static final EntityState KEY_GREEN = new EntityState("green_key");
+	public static final EntityState KEY_YELLOW = new EntityState("yellow_key");
 
 	public static final HashMap<EnumDirection, EntityState> WALK_DIRECTION_MAP = new HashMap<EnumDirection, EntityState>();
 	public static final HashMap<EnumDirection, EntityState> IDLE_DIRECTION_MAP = new HashMap<EnumDirection, EntityState>();
+	
 	
 	private final String stateID;
 	
@@ -36,7 +42,7 @@ public class EntityState {
 		return stateMap.get(id);
 	}
 	
-	//static initializer block
+	//static initializer block dont have to add into UML
 	static{
 		WALK_DIRECTION_MAP.put(EnumDirection.DOWN, WALK_DOWN);
 		WALK_DIRECTION_MAP.put(EnumDirection.UP, WALK_UP);

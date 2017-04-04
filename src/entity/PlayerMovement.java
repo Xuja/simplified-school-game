@@ -4,14 +4,12 @@ import game.EnumDirection;
 
 public class PlayerMovement {
 
-	/**
-	 * The time it takes for the player to move from 1 tile to another tile.
-	 */
+	
+	//the time it takes for the player to move from 1 tile to another tile.
 	public final float moveTime;
 	
-	/**
-	 * How far along the player is moving to another tile. value between 0.0 - 1.0
-	 */
+
+	//How far along the player is moving to another tile. value between 0.0 - 1.0
 	private float progress = 0.0F;
 	private EnumDirection moveDirection = EnumDirection.NONE;
 	
@@ -22,17 +20,14 @@ public class PlayerMovement {
 		this.moveTime = moveTime;
 	}
 	
-	/**
-	 * @return true if the player is in progress of moving to another tile
-	 */
+	
+	//return true if the player is in progress of moving to another tile
 	public boolean isPlayerMoving(){
 		return moveDirection != EnumDirection.NONE;
 	}
 	
-	/**
-	 * Starts moving the player in a direction
-	 * @param dir
-	 */
+
+	//Starts moving the player in a direction
 	public void startMoving(EnumDirection dir){
 		moveDirection = dir;
 	}

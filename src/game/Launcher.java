@@ -6,7 +6,7 @@ public class Launcher {
 	
 	public static void main(String[] args) {
 		Game game = new Game("Key Game");
-		//StartPage start = new StartPage(400, 600);
+		
 		game.init();
 
 		Thread gameUpdateThread = new Thread(){
