@@ -100,12 +100,15 @@ public class MenuRoom extends Room{
 		JRadioButton easyMode = new JRadioButton("Easy", false);
 		easyMode.setSize(100, 20);
 		easyMode.setLocation(0, 20);
+		easyMode.setFocusable(false);
 		JRadioButton normalMode = new JRadioButton("Normal", true);
 		normalMode.setSize(100, 20);
 		normalMode.setLocation(0, 40);
+		normalMode.setFocusable(false);
 		JRadioButton hardMode = new JRadioButton("Hard", false);
 		hardMode.setSize(100, 20);
 		hardMode.setLocation(0, 60);
+		hardMode.setFocusable(false);
 		
 		easyMode.setForeground(Color.BLACK);
 		easyMode.setFont(new java.awt.Font("Arial", Font.BOLD, 16));

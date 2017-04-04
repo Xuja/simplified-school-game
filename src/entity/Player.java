@@ -17,6 +17,7 @@ public class Player extends Entity implements IActionListener{
 		super(room, x, y);
 		this.playerMovement = new PlayerMovement(this, 0.5F);
 		this.entityState = EntityState.IDLE_DOWN;
+		this.animationSpeed = 2.0F;
 	}
 
 	@Override

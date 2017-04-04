@@ -1,7 +1,6 @@
 package entity;
 
 import room.GameRoom;
-import room.Room;
 import sprite.SpriteMap;
 
 public abstract class Entity {
@@ -16,6 +15,7 @@ public abstract class Entity {
 	protected SpriteMap spriteMap = new SpriteMap();
 	
 	private float animation = 0.0F;
+	protected float animationSpeed = 1.0F;
 	
 	public Entity(GameRoom room){
 		this(room, 0, 0);
@@ -30,7 +30,7 @@ public abstract class Entity {
 	}
 	
 	public void update(float deltaTime){
-		animation = (animation + deltaTime) % 1.0F;
+		animation = (animation + deltaTime * animationSpeed) % 1.0F;
 	}
 	
 	protected abstract void addSprites();
