@@ -42,11 +42,11 @@ public abstract class Entity {
 		entityLabel.repaint();
 	}
 	
-	public int getRenderPositionX(int tileSize){
+	protected int getRenderPositionX(int tileSize){
 		return (posX * tileSize);
 	}
 	
-	public int getRenderPositionY(int tileSize){
+	protected int getRenderPositionY(int tileSize){
 		return (posY * tileSize);
 	}
 	

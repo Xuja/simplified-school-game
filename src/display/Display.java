@@ -13,23 +13,15 @@ import javax.swing.JLayeredPane;
 public class Display extends JFrame implements WindowListener{
 	
 	private int width, height;
-	public String title;
-
-	private int rows;
-	
-	//is deze wel nodig?
-	//private JLabel playerLabel;
 	
 	private boolean closeWindow = false;
 	
 	public Display(String title){
-		this.title = title;
-		this.rows = 10;
+		this.setTitle(title);
 		createDisplay();
 	}
 
 	public void createDisplay(){
-		this.setTitle(title);
 		this.setResizable(false);
 
 		this.resizeDisplay();
@@ -38,12 +30,12 @@ public class Display extends JFrame implements WindowListener{
 		this.addWindowListener(this);
 	}
 	
-	private void resizeDisplay(){
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		int monitorWidth = gd.getDisplayMode().getWidth();
-		int monitorHeight = gd.getDisplayMode().getHeight();
-		this.setBounds((monitorWidth - width) / 2, (monitorHeight - height) / 2, width, height);
+	public boolean isWindowClosing(){
+		return closeWindow;
 	}
+	
+	@Override
+	public void windowClosing(WindowEvent arg0) {	closeWindow = true;		}
 	
 	public void setPanel(JLayeredPane panel){
 		this.getContentPane().removeAll();
@@ -55,12 +47,11 @@ public class Display extends JFrame implements WindowListener{
 		this.repaint();
 	}
 	
-	public void replacePanel(JLayeredPane panel){
-		
-	}
-	
-	public boolean isWindowClosing(){
-		return closeWindow;
+	private void resizeDisplay(){
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		int monitorWidth = gd.getDisplayMode().getWidth();
+		int monitorHeight = gd.getDisplayMode().getHeight();
+		this.setBounds((monitorWidth - width) / 2, (monitorHeight - height) / 2, width, height);
 	}
 	
 	@Override
@@ -68,9 +59,6 @@ public class Display extends JFrame implements WindowListener{
 
 	@Override
 	public void windowClosed(WindowEvent arg0) {}
-
-	@Override
-	public void windowClosing(WindowEvent arg0) {	closeWindow = true;		}
 
 	@Override
 	public void windowDeactivated(WindowEvent arg0) {}

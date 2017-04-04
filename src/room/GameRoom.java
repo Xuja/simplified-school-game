@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.xml.parsers.DocumentBuilder;
@@ -26,7 +25,6 @@ import org.xml.sax.SAXException;
 import display.TileLabel;
 import entity.Entity;
 import entity.EntityRegistry;
-import entity.Key;
 import entity.Player;
 import game.Game;
 import tile.Tiles;
@@ -39,7 +37,6 @@ public class GameRoom extends Room {
 	private final String roomID;
 
 	private Player thePlayer;
-	private Key blueKey;
 
 	private Tiles[][] tiles;
 	private int roomRows;
@@ -49,8 +46,6 @@ public class GameRoom extends Room {
 	private JPanel tilePanel;
 	private JPanel entityPanel;
 	private JPanel playerPanel;
-
-	private JLabel playerLabel;
 
 	private boolean isInitialized = false;
 
@@ -83,9 +78,6 @@ public class GameRoom extends Room {
 		entityPanel.setLayout(null);
 		entityPanel.setVisible(true);
 		entityPanel.setFocusable(false);
-
-		playerLabel = new JLabel();
-		playerPanel.add(playerLabel);
 
 		layeredPane.add(tilePanel, new Integer(0), 0);
 		layeredPane.add(entityPanel, new Integer(1), 0);
@@ -124,7 +116,7 @@ public class GameRoom extends Room {
 		return x >= 0 && x < tiles.length && y >= 0 && y < tiles[0].length;
 	}
 
-	public void loadTiles() throws IOException{
+	private void loadTiles() throws IOException{
 		String path = ROOM_PATH + roomID + "/tiles.dat";
 		tiles = new Tiles[roomRows][roomColumns];
 		File file = new File(path);
@@ -260,10 +252,6 @@ public class GameRoom extends Room {
 
 	public Player getPlayer(){
 		return thePlayer;
-	}
-
-	public Key getKey(){
-		return blueKey;
 	}
 
 	public void setTile(Tiles tile, int x, int y){
