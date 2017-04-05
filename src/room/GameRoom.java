@@ -94,7 +94,6 @@ public class GameRoom extends Room {
 		
 		pauseMenu = new PauseMenu();
 		pauseMenu.init(this, sizeX, sizeY);
-		//layeredPane.add(pauseMenu.getPausePanel(), new Integer(3), 0);
 		
 		layeredPane.setSize(sizeX, sizeY);
 		tilePanel.setSize(sizeX, sizeY);

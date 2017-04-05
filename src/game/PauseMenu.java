@@ -3,7 +3,6 @@ package game;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -26,9 +25,9 @@ public class PauseMenu{
 		pausePanel.setFocusable(false);
 		pausePanel.setLayout(null);
 
-		//ImageIcon resumeIcon = new ImageIcon(getClass().getResource("/texture/button/resumeButton.png"));
-		resumeButton = new JButton("resume");
-		resumeButton.setSize(200, 40);
+		resumeButton = new JButton("RESUME");
+		resumeButton.setSize(200, 50);
+		resumeButton.setLocation(220, 100);
 		resumeButton.setFocusable(false);
 		resumeButton.addActionListener(new ActionListener(){   
 			public void actionPerformed(ActionEvent e){
@@ -37,10 +36,9 @@ public class PauseMenu{
 
 		});
 
-		//ImageIcon resetIcon = new ImageIcon(getClass().getResource("/texture/button/resetButton.png"));
-
-		resetButton = new JButton("");
+		resetButton = new JButton("RESET");
 		resetButton.setSize(200, 50);
+		resetButton.setLocation(220, 160);
 		resetButton.setFocusable(false);
 		resetButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -49,9 +47,9 @@ public class PauseMenu{
 
 		});
 
-		//ImageIcon quitIcon = new ImageIcon(getClass().getResource("/texture/button/quitButton.png"));
-		quitButton = new JButton("");
+		quitButton = new JButton("QUIT");
 		quitButton.setSize(200, 50);
+		quitButton.setLocation(220, 220);
 		quitButton.setFocusable(false);
 		quitButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -68,10 +66,4 @@ public class PauseMenu{
 		return pausePanel;
 	}
 	
-	
-	
-	
-	
-
-
 }
