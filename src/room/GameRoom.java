@@ -81,8 +81,8 @@ public class GameRoom extends Room {
 		entityPanel.setVisible(true);
 		entityPanel.setFocusable(false);
 		
+		pausePanel = new JPanel();
 		
-
 		layeredPane.add(tilePanel, new Integer(0), 0);
 		layeredPane.add(entityPanel, new Integer(1), 0);
 		layeredPane.add(playerPanel, new Integer(2), 0);
