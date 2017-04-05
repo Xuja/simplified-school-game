@@ -15,4 +15,10 @@
     <state>idle</state>
     <data key="blue"/>
   </Entity>
+  <Entity id="key">
+    <x>8</x>
+    <y>9</y>
+    <state>idle</state>
+    <data key="red"/>
+  </Entity>
 </Room>

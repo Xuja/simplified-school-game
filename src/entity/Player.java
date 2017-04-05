@@ -12,7 +12,7 @@ public class Player extends Entity implements IActionListener{
 	private PlayerMovement playerMovement;
 
 	private EnumKey currentKey = null;
-	
+
 	public Player(GameRoom room){
 		super(room);
 		this.playerMovement = new PlayerMovement(this, 0.5F);
@@ -27,29 +27,29 @@ public class Player extends Entity implements IActionListener{
 		spriteMap.addSprite(EntityState.IDLE_LEFT, sf.addSprite("LEFT1").buildSprite());
 		spriteMap.addSprite(EntityState.IDLE_RIGHT, sf.addSprite("RIGHT1").buildSprite());
 		spriteMap.addSprite(EntityState.IDLE_UP, sf.addSprite("UP1").buildSprite());
-		
+
 		int i;
 		for(i = 0; i < 9; i++){
 			sf.addSprite("DOWN" + (i + 1));
 		}
 		spriteMap.addSprite(EntityState.WALK_DOWN, sf.buildSprite());
-		
+
 		for(i = 0; i < 9; i++){
 			sf.addSprite("LEFT" + (i + 1));
 		}
 		spriteMap.addSprite(EntityState.WALK_LEFT, sf.buildSprite());
-		
+
 		for(i = 0; i < 9; i++){
 			sf.addSprite("RIGHT" + (i + 1));
 		}
 		spriteMap.addSprite(EntityState.WALK_RIGHT, sf.buildSprite());
-		
+
 		for(i = 0; i < 9; i++){
 			sf.addSprite("UP" + (i + 1));
 		}
 		spriteMap.addSprite(EntityState.WALK_UP, sf.buildSprite());
 	}
-	
+
 	public EnumKey getCurrentKey(){
 		return currentKey;
 	}
@@ -76,11 +76,11 @@ public class Player extends Entity implements IActionListener{
 			case MOVE_RIGHT:
 				startMoving(EnumDirection.RIGHT);
 				break;
-				
+
 			case INTERACT:
 				pickupKey();
 				break;
-				
+
 			case PAUSE:
 				theRoom.pauseGame();
 				break;
@@ -93,12 +93,12 @@ public class Player extends Entity implements IActionListener{
 		playerMovement.updateMovement(deltaTime);
 	}
 
-	
-	 /**
-	  * Start moving the player in a direction, won't do anything if the player is already moving.
-	  * @param dir the direction the player will be moving
-	  */
-	 public void startMoving(EnumDirection dir){
+
+	/**
+	 * Start moving the player in a direction, won't do anything if the player is already moving.
+	 * @param dir the direction the player will be moving
+	 */
+	public void startMoving(EnumDirection dir){
 
 		if(dir == null || playerMovement.isPlayerMoving())
 			return;
@@ -132,42 +132,44 @@ public class Player extends Entity implements IActionListener{
 		tile.onPlayerWalkedTo(theRoom, this, nx, ny);
 
 		setPosition(nx, ny);
-		
+
 		setEntityState(EntityState.IDLE_DIRECTION_MAP.get(dir));
 	}
-	
+
 	@Override
 	public int getRenderPositionX(int tileSize){
 		return (int)((float)(posX + playerMovement.getX()) * tileSize);
 	}
-	
+
 	@Override
 	public int getRenderPositionY(int tileSize){
 		return (int)((float)(posY + playerMovement.getY()) * tileSize);
 	}
-	
+
 	@Override
 	public boolean isActive() {
 		return true;
 	}
-	
+
 	public void setEntityState(EntityState state){
 		entityState = state;
 	}
-	
+
 	public void pickupKey(){
-		Entity entity = theRoom.getEntityForPosition(posX, posY, this);
-		System.out.println(entity);
-		if(entity != null && entity instanceof Key){
-			
-			if(currentKey != null){
-				Key newKey = new Key(theRoom, posX, posY, currentKey);
-				theRoom.addEntityToRoom(newKey);
+		if(!playerMovement.isPlayerMoving()){
+			Entity entity = theRoom.getEntityForPosition(posX, posY, this);
+			System.out.println(entity);
+			if(entity != null && entity instanceof Key){
+
+				if(currentKey != null){
+					Key newKey = new Key(theRoom, posX, posY, currentKey);
+					theRoom.addEntityToRoom(newKey);
+				}
+
+				Key key = (Key)entity;
+				currentKey = key.getKey();
+				theRoom.removeEntityFromRoom(key);
 			}
-			
-			Key key = (Key)entity;
-			currentKey = key.getKey();
-			theRoom.removeEntityFromRoom(key);
 		}
 	}
 }
