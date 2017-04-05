@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Room>
+  <Size>
+    <Rows>10</Rows>
+    <Columns>10</Columns>
+  </Size>
+  <Entity id="player">
+    <x>1</x>
+    <y>1</y>
+    <state>idle_down</state>
+  </Entity>
+  <Entity id="key">
+    <x>3</x>
+    <y>8</y>
+    <state>idle</state>
+    <data key="blue"/>
+  </Entity>
+  <Entity id="key">
+    <x>6</x>
+    <y>6</y>
+    <state>idle</state>
+    <data key="red"/>
+  </Entity>
+  <Entity id="key">
+    <x>7</x>
+    <y>5</y>
+    <state>idle</state>
+    <data key="green"/>
+  </Entity>
+</Room>

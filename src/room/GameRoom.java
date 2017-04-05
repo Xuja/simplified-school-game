@@ -79,9 +79,6 @@ public class GameRoom extends Room {
 		entityPanel.setVisible(true);
 		entityPanel.setFocusable(false);
 
-		pauseMenu = new PauseMenu();
-		pauseMenu.init(this);
-
 		layeredPane.add(tilePanel, new Integer(0), 0);
 		layeredPane.add(entityPanel, new Integer(1), 0);
 		layeredPane.add(playerPanel, new Integer(2), 0);
@@ -92,7 +89,11 @@ public class GameRoom extends Room {
 
 		sizeX = roomRows * TILE_SIZE + 6;
 		sizeY = roomColumns * TILE_SIZE + 29;
-
+		
+		pauseMenu = new PauseMenu();
+		pauseMenu.init(this, sizeX, sizeY);
+		//layeredPane.add(pauseMenu.getPausePanel(), new Integer(3), 0);
+		
 		layeredPane.setSize(sizeX, sizeY);
 		tilePanel.setSize(sizeX, sizeY);
 		playerPanel.setSize(sizeX, sizeY);
@@ -318,12 +319,13 @@ public class GameRoom extends Room {
 	}
 
 	public void pauseGame(){
-		layeredPane.add(pauseMenu.getPausePanel(), new Integer(4));
+		layeredPane.add(pauseMenu.getPausePanel(), new Integer(3), 0);
 		layeredPane.repaint();
 	}
 
 	public void resumeGame(){
 		layeredPane.remove(pauseMenu.getPausePanel());
+		layeredPane.repaint();
 	}
 
 	public void restartGame(){
@@ -332,13 +334,5 @@ public class GameRoom extends Room {
 
 	public void quitGame(){
 		theGame.setRoom(new MenuRoom(theGame));
-	}
-
-	public int getSizeX() {
-		return sizeX;
-	}
-
-	public int getSizeY() {
-		return sizeY;
 	}
 }
