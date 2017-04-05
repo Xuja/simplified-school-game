@@ -148,7 +148,7 @@ public class Player extends Entity implements IActionListener{
 
 	@Override
 	public boolean isActive() {
-		return true;
+		return !theRoom.isPaused();
 	}
 
 	public void setEntityState(EntityState state){

@@ -51,6 +51,8 @@ public class GameRoom extends Room {
 
 	private List<Entity> entityList = new ArrayList<Entity>();
 
+	private boolean paused = false;
+	
 	public GameRoom(Game game, String id){
 		super(game);
 		this.roomID = id;
@@ -321,18 +323,24 @@ public class GameRoom extends Room {
 	public void pauseGame(){
 		layeredPane.add(pauseMenu.getPausePanel(), new Integer(3), 0);
 		layeredPane.repaint();
+		paused = true;
 	}
 
 	public void resumeGame(){
 		layeredPane.remove(pauseMenu.getPausePanel());
 		layeredPane.repaint();
+		paused = false;
 	}
 
 	public void restartGame(){
-		theGame.setRoom(new GameRoom(theGame, "Key Game"));
+		theGame.setRoom(new GameRoom(theGame, roomID));
 	}
 
 	public void quitGame(){
 		theGame.setRoom(new MenuRoom(theGame));
+	}
+	
+	public boolean isPaused(){
+		return paused;
 	}
 }
