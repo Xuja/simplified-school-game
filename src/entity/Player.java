@@ -80,6 +80,10 @@ public class Player extends Entity implements IActionListener{
 			case INTERACT:
 				pickupKey();
 				break;
+				
+			case PAUSE:
+				theRoom.pauseGame();
+				break;
 			}
 		}
 	}

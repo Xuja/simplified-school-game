@@ -41,11 +41,13 @@ public class GameRoom extends Room {
 	private Tiles[][] tiles;
 	private int roomRows;
 	private int roomColumns;
+	private int sizeX, sizeY;
 
 	private JLayeredPane layeredPane;
 	private JPanel tilePanel;
 	private JPanel entityPanel;
 	private JPanel playerPanel;
+	private JPanel pausePanel;
 
 	private boolean isInitialized = false;
 
@@ -78,6 +80,8 @@ public class GameRoom extends Room {
 		entityPanel.setLayout(null);
 		entityPanel.setVisible(true);
 		entityPanel.setFocusable(false);
+		
+		
 
 		layeredPane.add(tilePanel, new Integer(0), 0);
 		layeredPane.add(entityPanel, new Integer(1), 0);
@@ -87,8 +91,8 @@ public class GameRoom extends Room {
 
 		loadRoomData();
 
-		int sizeX = roomRows * TILE_SIZE + 6;
-		int sizeY = roomColumns * TILE_SIZE + 29;
+		sizeX = roomRows * TILE_SIZE + 6;
+		sizeY = roomColumns * TILE_SIZE + 29;
 		
 		layeredPane.setSize(sizeX, sizeY);
 		tilePanel.setSize(sizeX, sizeY);
@@ -312,5 +316,30 @@ public class GameRoom extends Room {
 		}
 		
 		return null;
+	}
+	
+	public void pauseGame(){
+		layeredPane.add(pausePanel, new Integer(4));
+		layeredPane.repaint();
+	}
+	
+	public void resumeGame(){
+		layeredPane.remove(pausePanel);
+	}
+	
+	public void restartGame(){
+		theGame.setRoom(new GameRoom(theGame, "Key Game"));
+	}
+	
+	public void quitGame(){
+		theGame.setRoom(new MenuRoom(theGame));
+	}
+
+	public int getSizeX() {
+		return sizeX;
+	}
+
+	public int getSizeY() {
+		return sizeY;
 	}
 }

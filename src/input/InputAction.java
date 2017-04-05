@@ -11,7 +11,8 @@ public enum InputAction {
 	MOVE_DOWN(KeyEvent.VK_DOWN),
 	MOVE_LEFT(KeyEvent.VK_LEFT),
 	MOVE_RIGHT(KeyEvent.VK_RIGHT),
-	INTERACT(KeyEvent.VK_SPACE);
+	INTERACT(KeyEvent.VK_SPACE),
+	PAUSE(KeyEvent.VK_P);
 
 	public static final HashMap<Integer, InputAction> INPUT_MAP = new HashMap<Integer, InputAction>();
 

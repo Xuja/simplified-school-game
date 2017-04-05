@@ -5,8 +5,8 @@
     <Columns>10</Columns>
   </Size>
   <Entity id="player">
-    <x>2</x>
-    <y>2</y>
+    <x>1</x>
+    <y>1</y>
     <state>idle_down</state>
     <data blabla="yes!"/>
   </Entity>
