@@ -1,5 +1,14 @@
 package entity;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import game.EnumDirection;
 import input.IActionListener;
 import input.InputAction;
@@ -169,7 +178,29 @@ public class Player extends Entity implements IActionListener{
 				Key key = (Key)entity;
 				currentKey = key.getKey();
 				theRoom.removeEntityFromRoom(key);
+				playSound();
 			}
 		}
+	}
+	public void playSound(){
+		File sound = new File("res/sounds/getKey.wav");
+		try {
+			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);
+			try {
+				Clip clip = AudioSystem.getClip();
+				clip.open(audio);
+				clip.start();
+			} catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

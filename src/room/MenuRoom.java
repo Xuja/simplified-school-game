@@ -26,6 +26,8 @@ public class MenuRoom extends Room{
 	private int width = 600;
 	private int height = 400;
 	
+	private boolean isOpen = false;
+	
 	public MenuRoom(Game game) {
 		super(game);
 	}
@@ -81,25 +83,31 @@ public class MenuRoom extends Room{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JLabel upHelp = new JLabel("Arrow UP:  Moves Player upwards");
+				JLabel spaceHelp = new JLabel("<html><font color = 'red'>Spacebar: Pick Up key</font></html>");
+				spaceHelp.setBounds(100, 100, 400, 20);
+				spaceHelp.setLocation(10, 280);
+				
+				backPanel.add(spaceHelp);
+				
+				JLabel upHelp = new JLabel("<html><font color = 'red'> Arrow UP:  Moves Player up </font></html>");
 				upHelp.setBounds(100, 100, 400, 20);
-				upHelp.setLocation(220, 280);
+				upHelp.setLocation(10, 200);
 		
 				backPanel.add(upHelp);
 
-				JLabel downHelp = new JLabel("Arrow DOWN:  Moves Player downwards");
+				JLabel downHelp = new JLabel("<html><font color = 'red'> Arrow DOWN:  Moves Player down </font></html>");
 				downHelp.setBounds(220, 200, 400, 20);
-				downHelp.setLocation(220,290);
+				downHelp.setLocation(10, 220);
 				backPanel.add(downHelp);
 
-				JLabel leftHelp = new JLabel("Arrow LEFT:  Moves Player left");
+				JLabel leftHelp = new JLabel("<html><font color = 'red'> Arrow LEFT:  Moves Player left </font></html>");
 				leftHelp.setBounds(100, 200, 400, 20);
-				leftHelp.setLocation(220, 300);
+				leftHelp.setLocation(10, 240);
 				backPanel.add(leftHelp);
 
-				JLabel rightHelp = new JLabel("Arrow RIGHT:  Moves Player right");
+				JLabel rightHelp = new JLabel("<html><font color = 'red'> Arrow RIGHT:  Moves Player right </font></html>");
 				rightHelp.setBounds(100, 250, 400, 20);
-				rightHelp.setLocation(220, 310);
+				rightHelp.setLocation(10, 260);
 				backPanel.add(rightHelp);
 			}
 		});			
