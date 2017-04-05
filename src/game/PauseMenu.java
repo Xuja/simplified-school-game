@@ -16,11 +16,11 @@ public class PauseMenu{
 		
 	}
 
-	public void init(GameRoom room){
+	public void init(GameRoom pauseRoom){
 
 		pausePanel = new JPanel();
 		pausePanel.setVisible(true);
-		pausePanel.setSize(room.getSizeX(), room.getSizeY());
+		pausePanel.setSize(pauseRoom.getSizeX(), pauseRoom.getSizeY());
 		pausePanel.setFocusable(false);
 
 		ImageIcon resumeIcon = new ImageIcon(getClass().getResource("/texture/buttonIMG/resumeButton.png"));
@@ -29,7 +29,7 @@ public class PauseMenu{
 		pausePanel.add(resumeButton, layout.CENTER);
 		resumeButton.addActionListener(new ActionListener(){   
 			public void actionPerformed(ActionEvent e){
-				room.resumeGame();
+				pauseRoom.resumeGame();
 			}
 
 		});
@@ -41,7 +41,7 @@ public class PauseMenu{
 		pausePanel.add(resetButton, layout.CENTER);
 		resetButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				room.restartGame();
+				pauseRoom.restartGame();
 			}
 
 		});
@@ -52,7 +52,7 @@ public class PauseMenu{
 		pausePanel.add(quitButton, layout.CENTER);
 		quitButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				room.quitGame();
+				pauseRoom.quitGame();
 			}
 		});
 	}

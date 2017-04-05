@@ -80,6 +80,8 @@ public class GameRoom extends Room {
 		entityPanel.setLayout(null);
 		entityPanel.setVisible(true);
 		entityPanel.setFocusable(false);
+		
+		
 
 		layeredPane.add(tilePanel, new Integer(0), 0);
 		layeredPane.add(entityPanel, new Integer(1), 0);
