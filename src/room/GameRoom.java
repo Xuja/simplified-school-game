@@ -8,25 +8,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import display.TileLabel;
 import entity.Entity;
 import entity.EntityRegistry;
 import entity.Player;
 import game.Game;
+import game.PauseMenu;
 import tile.Tiles;
 
 public class GameRoom extends Room {
@@ -47,8 +45,8 @@ public class GameRoom extends Room {
 	private JPanel tilePanel;
 	private JPanel entityPanel;
 	private JPanel playerPanel;
-	private JPanel pausePanel;
 
+	private PauseMenu pauseMenu;
 	private boolean isInitialized = false;
 
 	private List<Entity> entityList = new ArrayList<Entity>();
@@ -60,7 +58,7 @@ public class GameRoom extends Room {
 
 	@Override
 	public void init() {
-		
+
 		layeredPane = new JLayeredPane();
 		layeredPane.setLayout(null);
 		layeredPane.setFocusable(false);
@@ -80,9 +78,10 @@ public class GameRoom extends Room {
 		entityPanel.setLayout(null);
 		entityPanel.setVisible(true);
 		entityPanel.setFocusable(false);
-		
-		pausePanel = new JPanel();
-		
+
+		pauseMenu = new PauseMenu();
+		pauseMenu.init(this);
+
 		layeredPane.add(tilePanel, new Integer(0), 0);
 		layeredPane.add(entityPanel, new Integer(1), 0);
 		layeredPane.add(playerPanel, new Integer(2), 0);
@@ -93,7 +92,7 @@ public class GameRoom extends Room {
 
 		sizeX = roomRows * TILE_SIZE + 6;
 		sizeY = roomColumns * TILE_SIZE + 29;
-		
+
 		layeredPane.setSize(sizeX, sizeY);
 		tilePanel.setSize(sizeX, sizeY);
 		playerPanel.setSize(sizeX, sizeY);
@@ -304,7 +303,7 @@ public class GameRoom extends Room {
 	public void closeRoom(){
 		entityList.clear();
 	}
-	
+
 	public Entity getEntityForPosition(int x, int y, Entity exclude){
 		for(int i = 0; i < entityList.size(); i++){
 			Entity entity = entityList.get(i);
@@ -314,23 +313,23 @@ public class GameRoom extends Room {
 				}
 			}
 		}
-		
+
 		return null;
 	}
-	
+
 	public void pauseGame(){
-		layeredPane.add(pausePanel, new Integer(4));
+		layeredPane.add(pauseMenu.getPausePanel(), new Integer(4));
 		layeredPane.repaint();
 	}
-	
+
 	public void resumeGame(){
-		layeredPane.remove(pausePanel);
+		layeredPane.remove(pauseMenu.getPausePanel());
 	}
-	
+
 	public void restartGame(){
 		theGame.setRoom(new GameRoom(theGame, "Key Game"));
 	}
-	
+
 	public void quitGame(){
 		theGame.setRoom(new MenuRoom(theGame));
 	}
