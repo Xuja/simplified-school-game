@@ -76,6 +76,10 @@ public class Player extends Entity implements IActionListener{
 			case MOVE_RIGHT:
 				startMoving(EnumDirection.RIGHT);
 				break;
+				
+			case PAUSE:
+				theRoom.pauseGame();
+				break;
 			}
 		}
 	}

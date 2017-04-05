@@ -48,7 +48,7 @@ public class MenuRoom extends Room{
 		ImageIcon startIcon = new ImageIcon(getClass().getResource("/textures/button/playButton.png"));
 		startButton = new JButton(startIcon);
 		startButton.setLocation(220, 150);
-		startButton.setSize(200, 40);
+		startButton.setSize(200, 50);
 		startButton.setFocusable(false);
 		startButton.addActionListener(new ActionListener(){
 
@@ -61,8 +61,8 @@ public class MenuRoom extends Room{
 		
 		ImageIcon exitIcon = new ImageIcon(getClass().getResource("/textures/button/exitButton.png"));
 		exitButton = new JButton(exitIcon);
-		exitButton.setLocation(220, 250);
-		exitButton.setSize(200, 40);
+		exitButton.setLocation(220, 210);
+		exitButton.setSize(200, 50);
 		exitButton.setFocusable(false);
 		exitButton.addActionListener(new ActionListener() {
 			
@@ -74,8 +74,8 @@ public class MenuRoom extends Room{
 		
 		ImageIcon helpIcon = new ImageIcon(getClass().getResource("/textures/button/helpButton.png"));
 		helpButton = new JButton(helpIcon);
-		helpButton.setLocation(220, 350);
-		helpButton.setSize(200, 40);
+		helpButton.setLocation(220, 270);
+		helpButton.setSize(200, 50);
 		helpButton.setFocusable(false);
 		helpButton.addActionListener(new ActionListener() {
 			
@@ -83,23 +83,23 @@ public class MenuRoom extends Room{
 			public void actionPerformed(ActionEvent e) {
 				JLabel upHelp = new JLabel("Arrow UP:  Moves Player upwards");
 				upHelp.setBounds(100, 100, 400, 20);
-				upHelp.setLocation(220, 400);
+				upHelp.setLocation(220, 280);
 		
 				backPanel.add(upHelp);
 
 				JLabel downHelp = new JLabel("Arrow DOWN:  Moves Player downwards");
 				downHelp.setBounds(220, 200, 400, 20);
-				downHelp.setLocation(220,420);
+				downHelp.setLocation(220,290);
 				backPanel.add(downHelp);
 
 				JLabel leftHelp = new JLabel("Arrow LEFT:  Moves Player left");
 				leftHelp.setBounds(100, 200, 400, 20);
-				leftHelp.setLocation(220, 440);
+				leftHelp.setLocation(220, 300);
 				backPanel.add(leftHelp);
 
 				JLabel rightHelp = new JLabel("Arrow RIGHT:  Moves Player right");
 				rightHelp.setBounds(100, 250, 400, 20);
-				rightHelp.setLocation(220, 460);
+				rightHelp.setLocation(220, 310);
 				backPanel.add(rightHelp);
 			}
 		});			
