@@ -305,6 +305,19 @@ public class GameRoom extends Room {
 		entityList.clear();
 	}
 	
+	public Entity getEntityForPosition(int x, int y, Entity exclude){
+		for(int i = 0; i < entityList.size(); i++){
+			Entity entity = entityList.get(i);
+			if(entity != null && entity != exclude){
+				if(entity.getX() == x && entity.getY() == y){
+					return entity;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
 	public void pauseGame(){
 		layeredPane.add(pausePanel, new Integer(4));
 		layeredPane.repaint();
@@ -329,5 +342,4 @@ public class GameRoom extends Room {
 	public int getSizeY() {
 		return sizeY;
 	}
-	
 }
