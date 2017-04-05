@@ -23,7 +23,7 @@ public class PauseMenu{
 		pausePanel.setSize(pauseRoom.getSizeX(), pauseRoom.getSizeY());
 		pausePanel.setFocusable(false);
 
-		//ImageIcon resumeIcon = new ImageIcon(getClass().getResource("/texture/buttonIMG/resumeButton.png"));
+		ImageIcon resumeIcon = new ImageIcon(getClass().getResource("/texture/button/resumeButton.png"));
 		resumeButton = new JButton("resume");
 		resumeButton.setSize(200, 40);
 		pausePanel.add(resumeButton, layout.CENTER);
@@ -34,7 +34,7 @@ public class PauseMenu{
 
 		});
 
-		//ImageIcon resetIcon = new ImageIcon(getClass().getResource("/texture/buttonIMG/resetButton.png"));
+		ImageIcon resetIcon = new ImageIcon(getClass().getResource("/texture/button/resetButton.png"));
 
 		resetButton = new JButton("");
 		resetButton.setSize(200, 50);
@@ -46,7 +46,7 @@ public class PauseMenu{
 
 		});
 
-		//ImageIcon quitIcon = new ImageIcon(getClass().getResource("/texture/buttonIMG/quitButton.png"));
+		ImageIcon quitIcon = new ImageIcon(getClass().getResource("/texture/button/quitButton.png"));
 		quitButton = new JButton("");
 		quitButton.setSize(200, 50);
 		pausePanel.add(quitButton, layout.CENTER);
