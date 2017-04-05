@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -40,9 +43,10 @@ public class MenuRoom extends Room{
 		mainPanel.setLayout(null);
 		mainPanel.setSize(width, height);
 		mainPanel.setVisible(true);
-		mainPanel.setFocusable(false);		
-		
-		startButton = new JButton("Start");
+		mainPanel.setFocusable(false);	
+	
+		ImageIcon startIcon = new ImageIcon(getClass().getResource("/textures/button/playButton.png"));
+		startButton = new JButton(startIcon);
 		startButton.setLocation(220, 150);
 		startButton.setSize(200, 40);
 		startButton.setFocusable(false);
@@ -55,7 +59,8 @@ public class MenuRoom extends Room{
 			
 		});
 		
-		exitButton = new JButton("Exit");
+		ImageIcon exitIcon = new ImageIcon(getClass().getResource("/textures/button/exitButton.png"));
+		exitButton = new JButton(exitIcon);
 		exitButton.setLocation(220, 250);
 		exitButton.setSize(200, 40);
 		exitButton.setFocusable(false);
@@ -67,7 +72,8 @@ public class MenuRoom extends Room{
 			}
 		});		
 		
-		helpButton = new JButton("Help");
+		ImageIcon helpIcon = new ImageIcon(getClass().getResource("/textures/button/helpButton.png"));
+		helpButton = new JButton(helpIcon);
 		helpButton.setLocation(220, 350);
 		helpButton.setSize(200, 40);
 		helpButton.setFocusable(false);
