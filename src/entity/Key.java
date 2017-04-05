@@ -7,13 +7,13 @@ import sprite.SpriteFactory;
 
 public class Key extends Entity{
 
-	private String key;
+	private EnumKey key;
 	
 	public Key(GameRoom room) {
 		super(room);
 	}
 	
-	public String getKeyID(){
+	public EnumKey getKey(){
 		return key;
 	}
 
@@ -28,11 +28,11 @@ public class Key extends Entity{
 	@Override
 	protected void addSprites() {
 		SpriteFactory sf = new SpriteFactory("res/textures/key");
-		spriteMap.addSprite(EntityState.IDLE, sf.addSprite(key + "Key").buildSprite());
+		spriteMap.addSprite(EntityState.IDLE, sf.addSprite(key.getKeyID() + "Key").buildSprite());
 	}
 	
 	@Override
 	public void loadEntityData(HashMap<String,String> dataMap){
-		key = dataMap.get("key");
+		key = EnumKey.getKey(dataMap.get("key"));
 	}
 }

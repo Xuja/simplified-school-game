@@ -23,6 +23,7 @@ public class EntityBuilder{
 	public static void main(String[] args){
 		List<Entity> entityList = new ArrayList<Entity>();
 		entityList.add(new Entity("player", 1, 1, "idle_down"));
+		entityList.add(new Entity("key", 8, 8, "idle").addAditionalData("key", "blue"));
 		buildRoom("res/rooms/hard/room.dat", 16, 15, entityList);
 	}
 	
