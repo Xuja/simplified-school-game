@@ -11,7 +11,7 @@ public class Player extends Entity implements IActionListener{
 
 	private PlayerMovement playerMovement;
 
-	private int currentKey = -1;
+	private EnumKey currentKey = null;
 	
 	public Player(GameRoom room){
 		super(room);
@@ -50,7 +50,7 @@ public class Player extends Entity implements IActionListener{
 		spriteMap.addSprite(EntityState.WALK_UP, sf.buildSprite());
 	}
 	
-	public int getCurrentKey(){
+	public EnumKey getCurrentKey(){
 		return currentKey;
 	}
 
@@ -75,6 +75,10 @@ public class Player extends Entity implements IActionListener{
 
 			case MOVE_RIGHT:
 				startMoving(EnumDirection.RIGHT);
+				break;
+				
+			case INTERACT:
+				pickupKey();
 				break;
 			}
 		}
@@ -145,5 +149,21 @@ public class Player extends Entity implements IActionListener{
 	
 	public void setEntityState(EntityState state){
 		entityState = state;
+	}
+	
+	public void pickupKey(){
+		Entity entity = theRoom.getEntityForPosition(posX, posY, this);
+		System.out.println(entity);
+		if(entity != null && entity instanceof Key){
+			
+			if(currentKey != null){
+				Key newKey = new Key(theRoom, posX, posY, currentKey);
+				theRoom.addEntityToRoom(newKey);
+			}
+			
+			Key key = (Key)entity;
+			currentKey = key.getKey();
+			theRoom.removeEntityFromRoom(key);
+		}
 	}
 }

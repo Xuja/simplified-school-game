@@ -13,6 +13,12 @@ public class Key extends Entity{
 		super(room);
 	}
 	
+	public Key(GameRoom room, int x, int y, EnumKey key){
+		this(room);
+		this.setPosition(x, y);
+		this.key = key;
+	}
+	
 	public EnumKey getKey(){
 		return key;
 	}
@@ -20,9 +26,9 @@ public class Key extends Entity{
 	@Override
 	public void update(float deltaTime){
 		super.update(deltaTime);
-		if(theRoom.getPlayer().posX == posX && theRoom.getPlayer().posY == posY){
+		/*if(theRoom.getPlayer().posX == posX && theRoom.getPlayer().posY == posY){
 			theRoom.removeEntityFromRoom(this);
-		}
+		}*/
 	}
 	
 	@Override
