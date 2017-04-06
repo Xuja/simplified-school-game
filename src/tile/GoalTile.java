@@ -20,11 +20,11 @@ public class GoalTile extends Tiles {
 
 	@Override
 	public void onPlayerWalkedTo(GameRoom room, Player player, int x, int y){
-		playSound();
+		playSoundOnReachingGoal();
 		room.finishLevel();
 	}
 	
-	public void playSound(){
+	public void playSoundOnReachingGoal(){
 		File sound = new File("res/sounds/drop.wav");
 		try {
 			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);

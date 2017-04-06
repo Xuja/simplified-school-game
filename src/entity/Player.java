@@ -178,11 +178,11 @@ public class Player extends Entity implements IActionListener{
 				Key key = (Key)entity;
 				currentKey = key.getKey();
 				theRoom.removeEntityFromRoom(key);
-				playSound();
+				playSoundOnPickUp();
 			}
 		}
 	}
-	public void playSound(){
+	public void playSoundOnPickUp(){
 		File sound = new File("res/sounds/getKey.wav");
 		try {
 			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);

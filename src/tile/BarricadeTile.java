@@ -29,18 +29,18 @@ public class BarricadeTile extends Tiles {
 	
 	public void beforePlayerWalkTo(GameRoom room, Player player, int x, int y){
 		if(key == player.getCurrentKey()){
-			playSound();
+			playSoundOnRightBarricade();
 			room.replaceTile(TILE_WITHERED_GRASS, x, y);
 		}
 		if(key != player.getCurrentKey()){
 			if(player.getCurrentKey() != null){
-			playSound2();
+			playSoundOnWrongBarricade();
 			
 			}
 		}
 	}
 	
-	public void playSound(){
+	public void playSoundOnRightBarricade(){
 		File sound = new File("res/sounds/unlockChest.wav");
 		try {
 			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);
@@ -61,7 +61,7 @@ public class BarricadeTile extends Tiles {
 		}		
 	}
 	
-	public void playSound2(){
+	public void playSoundOnWrongBarricade(){
 		File sound = new File("res/sounds/wrong.wav");
 		try {
 			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);
