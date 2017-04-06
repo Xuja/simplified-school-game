@@ -83,11 +83,11 @@ public class MenuRoom extends Room{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JLabel spaceHelp = new JLabel("<html><font color = 'red'>Spacebar: Pick Up key</font></html>");
-				spaceHelp.setBounds(100, 100, 400, 20);
-				spaceHelp.setLocation(10, 280);
+				JLabel pauseHelp = new JLabel("<html><font color = 'red'> P: Pauses game</font></html>");
+				pauseHelp.setBounds(100, 100, 400, 20);
+				pauseHelp.setLocation(10, 180);
 				
-				backPanel.add(spaceHelp);
+				backPanel.add(pauseHelp);
 				
 				JLabel upHelp = new JLabel("<html><font color = 'red'> Arrow UP:  Moves Player up </font></html>");
 				upHelp.setBounds(100, 100, 400, 20);
@@ -108,7 +108,13 @@ public class MenuRoom extends Room{
 				JLabel rightHelp = new JLabel("<html><font color = 'red'> Arrow RIGHT:  Moves Player right </font></html>");
 				rightHelp.setBounds(100, 250, 400, 20);
 				rightHelp.setLocation(10, 260);
-				backPanel.add(rightHelp);
+				backPanel.add(rightHelp);				
+
+				JLabel spaceHelp = new JLabel("<html><font color = 'red'>Spacebar: Pick Up key</font></html>");
+				spaceHelp.setBounds(100, 100, 400, 20);
+				spaceHelp.setLocation(10, 280);
+				
+				backPanel.add(spaceHelp);
 			}
 		});			
 		
