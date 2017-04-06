@@ -22,11 +22,12 @@ public class EntityBuilder{
 
 	public static void main(String[] args){
 		List<Entity> entityList = new ArrayList<Entity>();
-		entityList.add(new Entity("player", 1, 1, "idle_down"));
-		entityList.add(new Entity("key", 3, 8, "idle").addAditionalData("key", "blue"));
-		entityList.add(new Entity("key", 6, 6, "idle").addAditionalData("key", "red"));
-		entityList.add(new Entity("key", 7, 5, "idle").addAditionalData("key", "green"));
-		buildRoom("res/rooms/normal/room.dat", 10, 10, entityList);
+		entityList.add(new Entity("player", 7, 5, "idle_left"));
+		entityList.add(new Entity("key", 12, 8, "idle").addAditionalData("key", "blue"));
+		entityList.add(new Entity("key", 3, 1, "idle").addAditionalData("key", "green"));
+		entityList.add(new Entity("key", 7, 8, "idle").addAditionalData("key", "red"));
+		entityList.add(new Entity("key", 9, 8, "idle").addAditionalData("key", "yellow"));
+		buildRoom("res/rooms/hard/room.dat", 14, 10, entityList);
 	}
 	
 	private static void buildRoom(String path, int rows, int columns, List<Entity> entities){

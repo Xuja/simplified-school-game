@@ -158,7 +158,6 @@ public class Player extends Entity implements IActionListener{
 	public void pickupKey(){
 		if(!playerMovement.isPlayerMoving()){
 			Entity entity = theRoom.getEntityForPosition(posX, posY, this);
-			System.out.println(entity);
 			if(entity != null && entity instanceof Key){
 
 				if(currentKey != null){
