@@ -32,10 +32,37 @@ public class BarricadeTile extends Tiles {
 			playSound();
 			room.replaceTile(TILE_WITHERED_GRASS, x, y);
 		}
+		if(key != player.getCurrentKey()){
+			if(player.getCurrentKey() != null){
+			playSound2();
+			
+			}
+		}
 	}
 	
 	public void playSound(){
 		File sound = new File("res/sounds/unlockChest.wav");
+		try {
+			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);
+			try {
+				Clip clip = AudioSystem.getClip();
+				clip.open(audio);
+				clip.start();
+			} catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	public void playSound2(){
+		File sound = new File("res/sounds/wrong.wav");
 		try {
 			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);
 			try {
