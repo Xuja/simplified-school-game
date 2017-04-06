@@ -178,29 +178,8 @@ public class Player extends Entity implements IActionListener{
 				Key key = (Key)entity;
 				currentKey = key.getKey();
 				theRoom.removeEntityFromRoom(key);
-				playSoundOnPickUp();
+				theRoom.playSound("getKey");
 			}
 		}
-	}
-	public void playSoundOnPickUp(){
-		File sound = new File("res/sounds/getKey.wav");
-		try {
-			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);
-			try {
-				Clip clip = AudioSystem.getClip();
-				clip.open(audio);
-				clip.start();
-			} catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (UnsupportedAudioFileException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 	}
 }

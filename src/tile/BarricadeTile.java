@@ -16,7 +16,7 @@ import room.GameRoom;
 public class BarricadeTile extends Tiles {
 
 	private final EnumKey key;
-	
+
 	public BarricadeTile(String texture, int id, EnumKey key) {
 		super(texture, id);
 		this.key = key;
@@ -26,61 +26,16 @@ public class BarricadeTile extends Tiles {
 	public boolean isSolid(){
 		return true;
 	}
-	
+
 	public void beforePlayerWalkTo(GameRoom room, Player player, int x, int y){
 		if(key == player.getCurrentKey()){
-			playSoundOnRightBarricade();
+			room.playSound("unlockChest");
 			room.replaceTile(TILE_WITHERED_GRASS, x, y);
 		}
 		if(key != player.getCurrentKey()){
 			if(player.getCurrentKey() != null){
-			playSoundOnWrongBarricade();
-			
+				room.playSound("wrong");
 			}
 		}
 	}
-	
-	public void playSoundOnRightBarricade(){
-		File sound = new File("res/sounds/unlockChest.wav");
-		try {
-			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);
-			try {
-				Clip clip = AudioSystem.getClip();
-				clip.open(audio);
-				clip.start();
-			} catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (UnsupportedAudioFileException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}
-	
-	public void playSoundOnWrongBarricade(){
-		File sound = new File("res/sounds/wrong.wav");
-		try {
-			AudioInputStream audio = AudioSystem.getAudioInputStream(sound);
-			try {
-				Clip clip = AudioSystem.getClip();
-				clip.open(audio);
-				clip.start();
-			} catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (UnsupportedAudioFileException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}
-	
-	
 }
