@@ -23,6 +23,7 @@ import display.TileLabel;
 import entity.Entity;
 import entity.EntityRegistry;
 import entity.Player;
+import game.FinishMenu;
 import game.Game;
 import game.PauseMenu;
 import tile.Tiles;
@@ -46,6 +47,7 @@ public class GameRoom extends Room {
 	private JPanel entityPanel;
 	private JPanel playerPanel;
 
+	private FinishMenu finishMenu;
 	private PauseMenu pauseMenu;
 	private boolean isInitialized = false;
 
@@ -299,7 +301,8 @@ public class GameRoom extends Room {
 	}
 
 	public void finishLevel(){
-		theGame.setRoom(new MenuRoom(theGame));
+		layeredPane.add(finishMenu.getFinishPanel(), new Integer(4), 0);
+		layeredPane.repaint();
 	}
 
 	public void closeRoom(){

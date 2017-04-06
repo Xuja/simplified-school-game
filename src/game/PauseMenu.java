@@ -12,9 +12,10 @@ public class PauseMenu{
 
 	private JPanel pausePanel;
 	private JButton resumeButton, quitButton, resetButton;
-	//private BorderLayout layout;
 	
-	public PauseMenu(){}
+	public PauseMenu(){
+		
+	}
 
 	public void init(GameRoom pauseRoom, int sizeX, int sizeY){
 
