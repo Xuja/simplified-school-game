@@ -56,6 +56,7 @@ public abstract class Entity {
 	
 	public void init(){
 		entityLabel = new JLabel();
+		entityLabel.setOpaque(false);
 		addSprites();
 	}
 	

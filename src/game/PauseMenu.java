@@ -31,7 +31,7 @@ public class PauseMenu{
 		pausePanel.setBorder(BorderFactory.createEtchedBorder());
 		pausePanel.setFocusable(false);
 		pausePanel.setLayout(null);
-
+		
 		JLabel pauseLabel = new JLabel("Paused");
 		Font font = new Font("Verdana", Font.BOLD, 24);
 		pauseLabel.setFont(font);
