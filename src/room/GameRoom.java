@@ -40,7 +40,6 @@ public class GameRoom extends Room {
 	private Tiles[][] tiles;
 	private int roomRows;
 	private int roomColumns;
-	private int sizeX, sizeY;
 
 	private JLayeredPane layeredPane;
 	private JPanel tilePanel;
@@ -91,11 +90,14 @@ public class GameRoom extends Room {
 
 		loadRoomData();
 
-		sizeX = roomRows * TILE_SIZE + 6;
-		sizeY = roomColumns * TILE_SIZE + 29;
+		int sizeX = roomRows * TILE_SIZE + 6;
+		int sizeY = roomColumns * TILE_SIZE + 29;
 		
 		pauseMenu = new PauseMenu();
 		pauseMenu.init(this, sizeX, sizeY);
+		
+		finishMenu = new FinishMenu();
+		finishMenu.init(this, sizeX, sizeY);
 		
 		layeredPane.setSize(sizeX, sizeY);
 		tilePanel.setSize(sizeX, sizeY);
@@ -303,6 +305,7 @@ public class GameRoom extends Room {
 	public void finishLevel(){
 		layeredPane.add(finishMenu.getFinishPanel(), new Integer(4), 0);
 		layeredPane.repaint();
+		paused = true;
 	}
 
 	public void closeRoom(){
