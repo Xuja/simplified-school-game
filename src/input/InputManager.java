@@ -23,16 +23,6 @@ public class InputManager implements KeyListener{
 			keys[action.ordinal()] = action.keyIndex;
 		}
 	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		performAction(e.getKeyCode(), 0);
-	}
-	
-	@Override
-	public void keyReleased(KeyEvent e) {
-		performAction(e.getKeyCode(), 1);
-	}
 	
 	private void performAction(int keycode, int flag){
 		
@@ -48,11 +38,21 @@ public class InputManager implements KeyListener{
 			}
 		}
 	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {}
 	
 	public void addActionListener(IActionListener listener){
 		actionListeners.add(listener);
 	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		performAction(e.getKeyCode(), 0);
+	}
+	
+	@Override
+	public void keyReleased(KeyEvent e) {
+		performAction(e.getKeyCode(), 1);
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent e) {}
 }

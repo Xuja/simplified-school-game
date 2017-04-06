@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -18,15 +17,12 @@ import game.Game;
 
 public class MenuRoom extends Room{
 
+	private static final int WIDTH = 600;
+	private static final int HEIGHT = 400;
+	
 	private JLayeredPane backPanel;
 	private JPanel mainPanel;
-	private JButton startButton, exitButton, helpButton;
 	private ButtonGroup modeSelectGroup;
-	
-	private int width = 600;
-	private int height = 400;
-	
-	private boolean isOpen = false;
 	
 	public MenuRoom(Game game) {
 		super(game);
@@ -37,18 +33,18 @@ public class MenuRoom extends Room{
 		
 		backPanel = new JLayeredPane();
 		backPanel.setLayout(null);
-		backPanel.setSize(width, height);
+		backPanel.setSize(WIDTH, HEIGHT);
 		backPanel.setVisible(true);
 		backPanel.setFocusable(false);
 		
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
-		mainPanel.setSize(width, height);
+		mainPanel.setSize(WIDTH, HEIGHT);
 		mainPanel.setVisible(true);
 		mainPanel.setFocusable(false);	
 	
 		ImageIcon startIcon = new ImageIcon(getClass().getResource("/textures/button/playButton.png"));
-		startButton = new JButton(startIcon);
+		JButton startButton = new JButton(startIcon);
 		startButton.setLocation(220, 150);
 		startButton.setSize(200, 50);
 		startButton.setFocusable(false);
@@ -62,7 +58,7 @@ public class MenuRoom extends Room{
 		});
 		
 		ImageIcon exitIcon = new ImageIcon(getClass().getResource("/textures/button/exitButton.png"));
-		exitButton = new JButton(exitIcon);
+		JButton exitButton = new JButton(exitIcon);
 		exitButton.setLocation(220, 210);
 		exitButton.setSize(200, 50);
 		exitButton.setFocusable(false);
@@ -75,7 +71,7 @@ public class MenuRoom extends Room{
 		});		
 		
 		ImageIcon helpIcon = new ImageIcon(getClass().getResource("/textures/button/helpButton.png"));
-		helpButton = new JButton(helpIcon);
+		JButton helpButton = new JButton(helpIcon);
 		helpButton.setLocation(220, 270);
 		helpButton.setSize(200, 50);
 		helpButton.setFocusable(false);
@@ -166,9 +162,7 @@ public class MenuRoom extends Room{
 	}
 
 	@Override
-	public void update(float deltaTime) {
-		
-	}
+	public void update(float deltaTime) {}
 
 	@Override
 	public JLayeredPane getPanel() {
@@ -176,8 +170,6 @@ public class MenuRoom extends Room{
 	}
 
 	@Override
-	public void closeRoom() {
-		
-	}
+	public void closeRoom() {}
 
 }

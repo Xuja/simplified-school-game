@@ -14,16 +14,12 @@ import room.GameRoom;
 
 public class FinishMenu {
 	
-	public static int PANEL_WIDTH = 400;
-	public static int PANEL_HEIGHT = 200;
+	private static final int PANEL_WIDTH = 400;
+	private static final int PANEL_HEIGHT = 200;
 	
 	private JPanel finishPanel;
-	private JButton backButton;
-	private JLabel finishLabel;
 	
-	public FinishMenu(){
-		
-	};
+	public FinishMenu(){}
 	
 	public void init(GameRoom finishRoom, int sizeX, int sizeY){
 
@@ -36,7 +32,7 @@ public class FinishMenu {
 		finishPanel.setFocusable(false);
 		finishPanel.setLayout(null);
 		
-		backButton = new JButton("MAIN MENU");
+		JButton backButton = new JButton("MAIN MENU");
 		backButton.setSize(200, 50);
 		backButton.setLocation((PANEL_WIDTH - 200) / 2, PANEL_HEIGHT / 2);
 		backButton.setFocusable(false);
@@ -48,7 +44,7 @@ public class FinishMenu {
 		
 		Font font = new Font("Verdana", Font.BOLD, 24);
 		
-		finishLabel = new JLabel("You've finished the level!");
+		JLabel finishLabel = new JLabel("You've finished the level!");
 		finishLabel.setFont(font);
 		finishLabel.setForeground(Color.WHITE);
 		finishLabel.setSize(400, 40);

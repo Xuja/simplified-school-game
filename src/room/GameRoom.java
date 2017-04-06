@@ -48,6 +48,7 @@ public class GameRoom extends Room {
 
 	private FinishMenu finishMenu;
 	private PauseMenu pauseMenu;
+	
 	private boolean isInitialized = false;
 
 	private List<Entity> entityList = new ArrayList<Entity>();

@@ -17,9 +17,7 @@ public class PauseMenu{
 	public static final int PANEL_WIDTH = 400;
 	public static final int PANEL_HEIGHT = 300;
 	
-	private JLabel pauseLabel;
 	private JPanel pausePanel;
-	private JButton resumeButton, quitButton, resetButton;
 	
 	public PauseMenu(){}
 
@@ -34,7 +32,7 @@ public class PauseMenu{
 		pausePanel.setFocusable(false);
 		pausePanel.setLayout(null);
 
-		pauseLabel = new JLabel("Paused");
+		JLabel pauseLabel = new JLabel("Paused");
 		Font font = new Font("Verdana", Font.BOLD, 24);
 		pauseLabel.setFont(font);
 		pauseLabel.setForeground(Color.WHITE);
@@ -42,7 +40,7 @@ public class PauseMenu{
 		pauseLabel.setLocation(100, 20);
 		pauseLabel.setHorizontalAlignment(JLabel.CENTER);
 		
-		resumeButton = new JButton("RESUME");
+		JButton resumeButton = new JButton("RESUME");
 		resumeButton.setSize(200, 50);
 		resumeButton.setLocation(100, 100);
 		resumeButton.setFocusable(false);
@@ -53,7 +51,7 @@ public class PauseMenu{
 
 		});
 
-		resetButton = new JButton("RESET");
+		JButton resetButton = new JButton("RESET");
 		resetButton.setSize(200, 50);
 		resetButton.setLocation(100, 160);
 		resetButton.setFocusable(false);
@@ -64,7 +62,7 @@ public class PauseMenu{
 
 		});
 
-		quitButton = new JButton("QUIT");
+		JButton quitButton = new JButton("QUIT");
 		quitButton.setSize(200, 50);
 		quitButton.setLocation(100, 220);
 		quitButton.setFocusable(false);

@@ -10,7 +10,7 @@ public interface IActionListener {
 	void onAction(InputAction action, int actionFlag);
 	
 	/**
-	 * @return wether the listener is active and will respond to actions
+	 * @return whether the listener is active and will respond to actions
 	 */
 	boolean isActive();
 }

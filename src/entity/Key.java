@@ -24,14 +24,6 @@ public class Key extends Entity{
 	}
 
 	@Override
-	public void update(float deltaTime){
-		super.update(deltaTime);
-		/*if(theRoom.getPlayer().posX == posX && theRoom.getPlayer().posY == posY){
-			theRoom.removeEntityFromRoom(this);
-		}*/
-	}
-	
-	@Override
 	protected void addSprites() {
 		SpriteFactory sf = new SpriteFactory("res/textures/key");
 		spriteMap.addSprite(EntityState.IDLE, sf.addSprite(key.getKeyID() + "Key").buildSprite());

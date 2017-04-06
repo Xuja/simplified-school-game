@@ -4,10 +4,8 @@ import game.EnumDirection;
 
 public class PlayerMovement {
 
-	
 	//the time it takes for the player to move from 1 tile to another tile.
-	public final float moveTime;
-	
+	private final float moveTime;
 
 	//How far along the player is moving to another tile. value between 0.0 - 1.0
 	private float progress = 0.0F;

@@ -8,25 +8,25 @@ import room.GameRoom;
 
 public class EntityRegistry {
 
-	private static final HashMap<String,Class<? extends Entity>> entityMap = new HashMap<String,Class<? extends Entity>>();
+	private static final HashMap<String,Class<? extends Entity>> ENTITY_MAP = new HashMap<String,Class<? extends Entity>>();
 
 	public static void registerEntity(String entityID, Class<? extends Entity> entityClass){
-		if(entityMap.containsKey(entityID)){
+		if(ENTITY_MAP.containsKey(entityID)){
 			System.err.println("Already got a entity with id " + entityID + "!");
 		}
 		else{
-			entityMap.put(entityID, entityClass);
+			ENTITY_MAP.put(entityID, entityClass);
 		}
 	}
 
 	public static Entity createNewEntity(String entityID, GameRoom room){
-		if(!entityMap.containsKey(entityID)){
+		if(!ENTITY_MAP.containsKey(entityID)){
 			System.err.println("Failed to create an entity, there is no entity registered with id " + entityID + "!");
 			return null;
 		}
 
 		try {
-			Class<? extends Entity> entityClass = entityMap.get(entityID);
+			Class<? extends Entity> entityClass = ENTITY_MAP.get(entityID);
 			Constructor<?> cons = entityClass.getConstructor(GameRoom.class);
 			Entity entity = (Entity) cons.newInstance(room);
 			return entity;
