@@ -1,7 +1,6 @@
 package test;
 
-import static org.junit.Assert.*;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import entity.Entity;
@@ -13,12 +12,8 @@ public class EntityCreationTest {
 	@Test
 	public void test() {
 		EntityRegistry.registerEntity("player", Player.class);
-
 		Entity entity = EntityRegistry.createNewEntity("player", null);
-
-		if(entity == null){
-			fail("entity is null");
-		}
+		Assert.assertNull("No entity was created!", entity);
 	}
 
 }

@@ -6,7 +6,7 @@ import room.GameRoom;
 
 public class Tiles{
 	
-	private static final Tiles[] TILES = new Tiles [8];
+	private static final Tiles[] TILES = new Tiles[8];
 	
 	public static final Tiles TILE_GRASS = new GrassTile("res/textures/tile/grass1.png", 0);
 	public static final Tiles TILE_GOAL = new GoalTile("res/textures/tile/goal.png", 1 );

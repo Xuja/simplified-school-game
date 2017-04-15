@@ -6,23 +6,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InputManager implements KeyListener{
-
-	private final int[] keys;
 	
 	private Set<IActionListener> actionListeners = new HashSet<IActionListener>();
 	
-	public InputManager(){
-		keys = new int[InputAction.size()];
-	}
-	
-	/**
-	 * Initializes the keys based on the enum InputAction
-	 */
-	public void initKeys(){
-		for(InputAction action : InputAction.values()){
-			keys[action.ordinal()] = action.keyIndex;
-		}
-	}
+	public InputManager(){}
 	
 	private void performAction(int keycode, int flag){
 		

@@ -11,7 +11,7 @@ public class Player extends Entity implements IActionListener{
 
 	private PlayerMovement playerMovement;
 
-	private EnumKey currentKey = null;
+	protected EnumKey currentKey = null;
 
 	public Player(GameRoom room){
 		super(room);
@@ -129,11 +129,13 @@ public class Player extends Entity implements IActionListener{
 		int ny = posY + dir.y;
 
 		Tiles tile = theRoom.getTile(nx, ny);
-		tile.onPlayerWalkedTo(theRoom, this, nx, ny);
+		if(tile.canPlayerWalkTo(this)){
+			tile.onPlayerWalkedTo(theRoom, this, nx, ny);
 
-		setPosition(nx, ny);
+			setPosition(nx, ny);
 
-		setEntityState(EntityState.IDLE_DIRECTION_MAP.get(dir));
+			setEntityState(EntityState.IDLE_DIRECTION_MAP.get(dir));	
+		}
 	}
 
 	@Override

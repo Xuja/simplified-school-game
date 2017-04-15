@@ -37,7 +37,7 @@ public class GameRoom extends Room {
 
 	private Player thePlayer;
 
-	private Tiles[][] tiles;
+	protected Tiles[][] tiles;
 	private int roomRows;
 	private int roomColumns;
 
@@ -48,13 +48,13 @@ public class GameRoom extends Room {
 
 	private FinishMenu finishMenu;
 	private PauseMenu pauseMenu;
-	
+
 	private boolean isInitialized = false;
 
-	private List<Entity> entityList = new ArrayList<Entity>();
+	protected List<Entity> entityList = new ArrayList<Entity>();
 
 	private boolean paused = false;
-	
+
 	public GameRoom(Game game, String id){
 		super(game);
 		this.roomID = id;
@@ -93,13 +93,13 @@ public class GameRoom extends Room {
 
 		int sizeX = roomRows * TILE_SIZE + 6;
 		int sizeY = roomColumns * TILE_SIZE + 29;
-		
+
 		pauseMenu = new PauseMenu();
 		pauseMenu.init(this, sizeX, sizeY);
-		
+
 		finishMenu = new FinishMenu();
 		finishMenu.init(this, sizeX, sizeY);
-		
+
 		layeredPane.setSize(sizeX, sizeY);
 		tilePanel.setSize(sizeX, sizeY);
 		playerPanel.setSize(sizeX, sizeY);
@@ -109,7 +109,9 @@ public class GameRoom extends Room {
 			thePlayer = new Player(this);
 		}
 
-		theGame.getInputManager().addActionListener(thePlayer);
+		if(theGame != null){
+			theGame.getInputManager().addActionListener(thePlayer);
+		}
 		try {
 			loadTiles();
 		} catch (IOException e) {
@@ -225,13 +227,15 @@ public class GameRoom extends Room {
 
 	private Entity loadEntity(String entityID, int entityPosX, int entityPosY, String entityState){
 		Entity entity = EntityRegistry.createNewEntity(entityID, this);
-		entity.setPosition(entityPosX, entityPosY);
-		entity.setEntityState(entityState);
 
-		if(entity instanceof Player){
-			thePlayer = (Player) entity;
+		if(entity != null){
+			entity.setPosition(entityPosX, entityPosY);
+			entity.setEntityState(entityState);
+
+			if(entity instanceof Player){
+				thePlayer = (Player) entity;
+			}
 		}
-
 		return entity;
 	}
 
@@ -345,7 +349,7 @@ public class GameRoom extends Room {
 	public void quitGame(){
 		theGame.setRoom(new MenuRoom(theGame));
 	}
-	
+
 	public boolean isPaused(){
 		return paused;
 	}
