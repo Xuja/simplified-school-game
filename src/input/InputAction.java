@@ -1,8 +1,7 @@
 package input;
 
+import java.awt.event.KeyEvent;
 import java.util.HashMap;
-
-import com.sun.glass.events.KeyEvent;
 
 @SuppressWarnings("restriction")
 public enum InputAction {
